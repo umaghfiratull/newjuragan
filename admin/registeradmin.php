@@ -14,7 +14,7 @@ include '../admin/koneksi.php';
         <title> Login Register Juragan </title>
 
         <!-- CSS -->
-        <link rel="stylesheet" href="assets/css/loginstyle.css">
+        <link rel="stylesheet" href="assets/css/registerstyle.css">
                 
         <!-- Boxicons CSS -->
         <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
@@ -35,25 +35,33 @@ include '../admin/koneksi.php';
                     </div>
                     <form method="POST">
                         <div class="field input-field">
-                            <input type="email" name="email" placeholder="Email" class="email">
+                            <input type="text" name="nama" placeholder="Nama Lengkap" class="input">
                         </div>
 
                         <div class="field input-field">
-                            <input type="password" name="pass" placeholder="Password" class="pass">
+                            <input type="email" name="email" placeholder="Email" class="input">
+                        </div>
+
+                        <div class="field input-field">
+                            <input type="text" name="no_telepon" placeholder="Nomor Telepon /  WA" class="input">
+                        </div>
+
+                        <div class="field input-field">
+                            <input type="password" name="password" placeholder="Password" class="password">
                             <i class='bx bx-hide eye-icon'></i>
                         </div>
 
-                        <div class="form-link">
-                            <a href="#" class="forgot-pass">Lupa Password?</a>
+                        <div class="field input-field">
+                            <input type="password" name="kpassword" placeholder="Konfirmasi password" class="password">
                         </div>
 
                         <div class="field button-field">
-                            <button type="submit" name="login">Login</button>
+                        <button type="submit" name="daftar">Daftar</button>
                         </div>
                     </form>
 
                     <div class="form-link">
-                        <span>Belum Punya Akun? <a href="registeradmin.php">Daftar Sekarang</a></span>
+                        <span>Sudah Punya Akun? <a href="login.php">Login</a></span>
                     </div>
                 </div>
 
@@ -73,25 +81,49 @@ include '../admin/koneksi.php';
                     </a>
                 </div> -->
 
+                </div>
             </div>
-        </section>
 
-        <?php
-            if (isset($_POST['login'])) {
-              $ambil = $koneksi->query("SELECT * FROM admin WHERE email='$_POST[email]' AND password ='$_POST[pass]'");
-              $yangcocok = $ambil->num_rows;
-              if ($yangcocok == 1) {
-                $_SESSION['admin'] = $ambil->fetch_assoc();
-                echo "<div class='alert alert-info'>Login Sukses</div>";
-                echo "<script>alert('Login Sukses');</script>";
-                echo "<meta http-equiv='refresh' content='1;url=dbadmin.php'>";
-              } else {
-                echo "<div class='alert alert-danger'>Login Gagal</div>";
-                echo "<script>alert('Login Gagal, cek kembali email dan password. Pastikan semua terisi');</script>";
-                echo "<meta http-equiv='refresh' content='1;url=login.php'>";
-              }
+<?php
+if (isset($_POST["daftar"])) {
+    $nama = $_POST["nama"];
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+    $kpassword = $_POST["kpassword"];
+    // $alamat = $_POST["alamat"];
+    $telepon = $_POST["no_telepon"];
+
+    // Validasi data input
+    if (empty($nama) || empty($email) || empty($password) || empty($kpassword) || empty($telepon)) {
+        echo "<script>alert('Semua field harus diisi');</script>";
+    } else {
+        // Check if passwords match
+        if ($password !== $kpassword) {
+            echo "<script>alert('Konfirmasi password tidak sesuai');</script>";
+        } else {
+            // Cek apakah email sudah digunakan
+            $stmt = $koneksi->prepare("SELECT * FROM admin WHERE email=?");
+            $stmt->bind_param("s", $email);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $stmt->close();
+
+            if ($result->num_rows > 0) {
+                echo "<script>alert('Pendaftaran gagal, email sudah digunakan');</script>";
+            } else {
+                // Insert data pelanggan
+                $stmt = $koneksi->prepare("INSERT INTO admin(email, password, nama, no_telepon) VALUES (?, ?, ?, ?)");
+                $stmt->bind_param("ssss", $email, $password, $nama, $telepon);
+                $stmt->execute();
+                $stmt->close();
+
+                echo "<script>alert('Pendaftaran sukses, silahkan login');</script>";
+                echo "<script>location = 'login.php';</script>";
             }
-            ?>
+        }
+    }
+}
+?>
 
 
         <!-- JavaScript -->
