@@ -67,7 +67,7 @@ include '../admin/koneksi.php';
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="keberangkatan.php">
                         <span class="icon">
                             <ion-icon name="airplane-outline"></ion-icon>
                         </span>
@@ -76,7 +76,7 @@ include '../admin/koneksi.php';
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="daftarbarang.php">
                         <span class="icon">
                             <ion-icon name="briefcase-outline"></ion-icon>
                         </span>
@@ -85,7 +85,7 @@ include '../admin/koneksi.php';
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="pemesanan.php">
                         <span class="icon">
                             <ion-icon name="calendar-outline"></ion-icon>
                         </span>
@@ -94,7 +94,7 @@ include '../admin/koneksi.php';
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="dataagen.php">
                         <span class="icon">
                             <ion-icon name="accessibility-outline"></ion-icon>
                         </span>
@@ -103,7 +103,7 @@ include '../admin/koneksi.php';
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="pengeluaran.php">
                         <span class="icon">
                             <ion-icon name="cash-outline"></ion-icon>
                         </span>
@@ -112,7 +112,7 @@ include '../admin/koneksi.php';
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="laporan.php">
                         <span class="icon">
                             <ion-icon name="document-outline"></ion-icon>
                         </span>

@@ -53,7 +53,7 @@
                 <li>
                     <a href="mutawwif.php">
                         <span class="icon">
-                            <ion-icon name="book-outline"></ion-icon>
+                            <ion-icon name="people-outline"></ion-icon>
                         </span>
                         <span class="title">mutawwif</span>
                     </a>
