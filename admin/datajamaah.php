@@ -191,6 +191,7 @@ include 'koneksi.php';
                     <table class="table table-scroll table-striped" border="1">
                         <thead>
                             <tr>
+                                <td>NIK</td>
                                 <td>Nama Lengkap</td>
                                 <td>Alamat</td>
                                 <td>Nomor Telpon</td>
@@ -206,6 +207,9 @@ include 'koneksi.php';
                             <?php $ambil = $koneksi->query("SELECT * FROM jamaah"); ?>
                         <?php while ($perproduk = $ambil->fetch_assoc()) { ?>
                             
+                                        <td>
+                                                <p><?php echo $perproduk['NIK']; ?></p>
+                                        </td>
                                         <td>
                                                 <p><?php echo $perproduk['nama_lengkap']; ?></p>
                                         </td>

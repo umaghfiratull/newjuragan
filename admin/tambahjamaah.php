@@ -34,6 +34,11 @@ if (!isset($_SESSION["admin"])) {
 
 <form method="post" enctype="multipart/form-data">
     <div class="form-group">
+        <label>Id Kependudukan</label>
+        <input type="number" class="form-control" name="nik">
+    </div>
+
+    <div class="form-group">
         <label>Nama Jamaah</label>
         <input type="text" class="form-control" name="nama">
     </div>
@@ -59,8 +64,23 @@ if (!isset($_SESSION["admin"])) {
     </div>
 
     <div class="form-group">
-        <label>Nama Orang Tua</label>
+        <label>Nama Ayah</label>
         <input type="text" class="form-control" name="ortu">
+    </div>
+    <div class="form-group">
+        <label>Nama Agen</label>
+        <?php
+            echo "<select name=agen>
+                    <option selected> Pilih Nama Agen </option>";
+                    $sql="SELECT * FROM agen";
+                    if (!$result = $koneksi->query($sql)) {
+                        die('There was an error running the query [' .$koneksi->error. ']');
+                    }
+                    while ($d=$result->fetch_assoc()) {
+                        echo "<option value=$d[id_agen] > $d[id_agen] - $d[nama]</option>";
+                    }
+            echo "</select>"
+        ?>
     </div>
 
     <button class="btn btn-primary" name="save">Simpan</button>
@@ -70,7 +90,9 @@ if (!isset($_SESSION["admin"])) {
 <?php
 if (isset($_POST['save'])) {
     // Prepare the SQL statement
-$stmt = $koneksi->prepare("INSERT INTO jamaah (nama_lengkap, alamat, no_telepon, tgl_lahir, jenis_kelamin, nama_bapak) VALUES (?, ?, ?, ?, ?, ?)");
+$stmt = $koneksi->prepare("INSERT INTO jamaah (NIK, nama_lengkap, alamat, no_telepon, tgl_lahir, jenis_kelamin, id_agen, nama_bapak)
+                            VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+
 
 // Check if the prepare statement was successful
 if (!$stmt) {
@@ -78,7 +100,7 @@ if (!$stmt) {
 }
 
 // Bind the parameters
-$success = $stmt->bind_param("ssisss", $_POST['nama'], $_POST['almt'], $_POST['tlp'], $_POST['tgllhr'], $_POST['jnskel'], $_POST['ortu']);
+$success = $stmt->bind_param("sssissss", $_POST['nik'], $_POST['nama'], $_POST['almt'], $_POST['tlp'], $_POST['tgllhr'], $_POST['jnskel'], $_POST['agen'], $_POST['ortu']);
 
 // Check if binding parameters was successful
 if (!$success) {

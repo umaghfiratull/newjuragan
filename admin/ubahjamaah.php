@@ -24,6 +24,11 @@ $pecah=$ambil->fetch_assoc();
 </head>
 <form method="post" enctype="multipart/form-data">
 	<div class="form-group">
+		  <label>ID Kependudukan</label>
+		  <input type="number" name="nik" class="form-control" value="<?php echo $pecah['NIK'];?>">
+	</div>
+
+	<div class="form-group">
 		  <label>Nama Jamaah</label>
 		  <input type="text" name="nama" class="form-control" value="<?php echo $pecah['nama_lengkap'];?>">
 	</div>
@@ -46,9 +51,24 @@ $pecah=$ambil->fetch_assoc();
 		  <input type="text" name="jnskel" class="form-control" value="<?php echo $pecah['jenis_kelamin'];?>">
 	</div>
 	<div class="form-group">
-		  <label>Nama Orang Tua</label>
+		  <label>Nama Ayah</label>
 		  <input type="text" name="ortu" class="form-control" value="<?php echo $pecah['nama_bapak'];?>">
 	</div>
+	<div class="form-group">
+        <label>Nama Agen</label>
+        <?php
+            echo "<select name=agen>
+                    <option selected> Pilih Nama Agen </option>";
+                    $sql="SELECT * FROM agen";
+                    if (!$result = $koneksi->query($sql)) {
+                        die('There was an error running the query [' .$koneksi->error. ']');
+                    }
+                    while ($d=$result->fetch_assoc()) {
+                        echo "<option value=$d[id_agen] > $d[id_agen] - $d[nama]</option>";
+                    }
+            echo "</select>"
+        ?>
+    </div>
 
 	
 	<button class="btn btn-primary" name="ubah"><i class="bi bi-floppy"></i> Simpan</button>
@@ -68,24 +88,28 @@ $pecah=$ambil->fetch_assoc();
 				move_uploaded_file($lokasifoto, "assets/mutawwif/$namafoto");
 
 				$koneksi->query("UPDATE jamaah 
-								SET nama_lengkap='$_POST[nama]',
+								SET NIK='$_POST[nik]',
+									nama_lengkap='$_POST[nama]',
 									alamat='$_POST[almt]',
 									no_telepon='$_POST[tlp]',
 									tgl_lahir='$_POST[tgllhr]',
 									jenis_kelamin='$_POST[jnskel]',
-									nama_bapak='$_POST[ortu]'
+									nama_bapak='$_POST[ortu]',
+									id_agen='$_POST[agen]'
 								WHERE NIK='$_GET[id]'");	
 			}
 
 			else
 			{
 			    $koneksi->query("UPDATE jamaah 
-								SET nama_lengkap='$_POST[nama]',
+								SET NIK='$_POST[nik]',
+									nama_lengkap='$_POST[nama]',
 									alamat='$_POST[almt]',
 									no_telepon='$_POST[tlp]',
 									tgl_lahir='$_POST[tgllhr]',
 									jenis_kelamin='$_POST[jnskel]',
-									nama_bapak='$_POST[ortu]'
+									nama_bapak='$_POST[ortu]',
+									id_agen='$_POST[agen]'
 								WHERE NIK='$_GET[id]'");
 			}
 				echo "<script>alert('Data produk telah diubah');</script>";
