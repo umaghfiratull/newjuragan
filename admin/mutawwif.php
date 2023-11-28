@@ -2,7 +2,7 @@
 session_start();
 // Skrip Koneksi
 include '../admin/koneksi.php';
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">
