@@ -1,0 +1,23 @@
+**UPDATE 28 November 2023**
+
+========== Update Database ==========
+tabel jamaah :
+	1. NIK menjadi input tidak Auto Increment
+	2. id_agen terkoneksi dan bisa di input
+	3. pembenaaran penulisan no _telepon menjadi no_telepon
+	4. pembenaaran penulisan nama lengkap menjadi nama_lengkap
+
+tabel master_paket :
+	1. ditambah foto_produk
+	2. ditambah deskripsi_produk
+
+tabel mutawwif :
+	1. untuk penginputan data mutawwif dan tampilan di home page website
+====================================
+
+========== Update File ==========
+1. CRUD data jamaah
+2. CRUP paket
+3. CRUD mutawwif
+4. homa page tampil data paket dan data mutawwif berdasarkan database
+====================================
