@@ -206,7 +206,7 @@ if (!isset($_SESSION['admin'])) {
                             ORDER BY master_paket.id_paket DESC LIMIT 10"); ?>
                             <?php while ($pecah = $ambil->fetch_assoc()) { ?>
                                 <tr>
-                                    <td><?php echo $pecah['nama_paket']; ?></td>
+                                    <td><h4 class="wrap"><?php echo $pecah['nama_paket']; ?> </h4></td>
                                     <td>Rp. <?php echo number_format($pecah['harga']); ?></td>
                                     <td><?php echo $pecah['pilihan_paket']; ?></td>
                                     <td>

@@ -1,3 +1,9 @@
+<?php
+session_start();
+//koneksi ke database
+include'admin/koneksi.php';
+?>
+
 <h2>Detail Pembelian</h2>
 <?php
 $ambil = $koneksi->query("SELECT * FROM master_paket JOIN pelanggan ON pembelian.id_pelanggan=pelanggan.id_pelanggan WHERE pembelian.id_pembelian='$_GET[id]'");

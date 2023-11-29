@@ -1,7 +1,14 @@
 <?php
 session_start();
-// Skrip Koneksi
-include 'koneksi.php';
+//koneksi ke database
+include '../admin/koneksi.php';
+
+if (!isset($_SESSION['admin'])) {
+    echo "<script>alert('Anda harus login');</script>";
+    echo "<script>location='login.php';</script>";
+    header('location:login.php');
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -163,19 +170,32 @@ include 'koneksi.php';
                     <div class="cardtampung">
                         <div class="cardjamaah">
                             <div>
-                                <div class="cardName">Laki-Laki</div>
-                                <div class="numbers">46</div>
+                                <?php $ambil = $koneksi->query("SELECT COUNT(*) AS jumlah_pria
+                                 FROM jamaah WHERE jenis_kelamin = 'laki-laki'"); ?>
+
+                                <?php while ($pecah = $ambil->fetch_assoc()) { ?>
+                                     <div class="cardName">Laki-Laki</div>
+                                    <div class="numbers"><?php echo number_format($pecah['jumlah_pria']); ?></div>
+                                <?php } ?>
                             </div>
                         </div>
                         <div class="cardjamaah">
                             <div>
-                                <div class="cardName">Perempuan</div>
-                                <div class="numbers">48</div>
+                                <?php $ambil = $koneksi->query("SELECT COUNT(*) AS jumlah_pria
+                                 FROM jamaah WHERE jenis_kelamin = 'perempuan'"); ?>
+                                <?php while ($pecah = $ambil->fetch_assoc()) { ?>
+                                     <div class="cardName">Perempuan</div>
+                                    <div class="numbers"><?php echo number_format($pecah['jumlah_pria']); ?></div>
+                                <?php } ?>
                             </div>
-                        </div><div class="cardjamaah">
-                            <div>
-                                <div class="cardName">Total</div>
-                                <div class="numbers">94</div>
+                        </div>
+                        <div class="cardjamaah">
+                        <div>
+                                <?php $ambil = $koneksi->query("SELECT COUNT(*) AS total_jamaah FROM jamaah"); ?>
+                                <?php while ($pecah = $ambil->fetch_assoc()) { ?>
+                                     <div class="cardName">Total</div>
+                                    <div class="numbers"><?php echo number_format($pecah['total_jamaah']); ?></div>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>

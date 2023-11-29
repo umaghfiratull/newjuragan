@@ -224,19 +224,19 @@ include '../admin/koneksi.php';
                         <?php while ($perproduk = $ambil->fetch_assoc()) { ?>
                             
                             
-                                    <td><img src="assets/foto/<?php echo $perproduk['foto_produk']; ?>" alt="" class="img-fluid" style="max-width: 250px; max-height: 250px;"></td>
+                                    <td><img src="assets/foto/<?php echo $perproduk['foto_produk']; ?>" alt="" class="img-fluid" style="max-width: 150px; max-height: 150px;"></td>
                                    
                                        <td> 
-                                            <h3><?php echo $perproduk['nama_paket']; ?></h3>
+                                            <h4 class="wrap" contenteditable="false"><?php echo $perproduk['nama_paket']; ?></h4>
                                         </td>
                                         <td>
-                                            <h5 style="color:grey;">stok: <?php echo $perproduk['lama_waktu']; ?></h5>
+                                            <h4 style="color:grey;">stok: <?php echo $perproduk['lama_waktu']; ?></h4>
                                         </td>
                                         <td>
-                                            <h5>Rp. <?php echo number_format($perproduk['harga']); ?></h5>
+                                            <h4>Rp. <?php echo number_format($perproduk['harga']); ?></h4>
                                         </td>
                                         <td>
-                                            <h3 class="wrap" contenteditable="true"><?php echo $perproduk['deskripsi_produk']; ?></h3>
+                                            <h4 class="wrap" contenteditable="false"><?php echo $perproduk['deskripsi_produk']; ?></h4>
                                         </td>
                                         <td>
                                         <a href="ubahpaket.php?id=<?php echo $perproduk['id_paket']; ?>" class="btn" style="background-color: #FF6E1E; color: #fff;"> <i class="fas fa-shopping-cart"></i> Edit</a>
