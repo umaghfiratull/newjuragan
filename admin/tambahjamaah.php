@@ -96,7 +96,7 @@ if (!isset($_SESSION["admin"])) {
 <?php
 if (isset($_POST['save'])) {
     // Prepare the SQL statement
-$stmt = $koneksi->prepare("INSERT INTO jamaah (NIK, nama_lengkap, alamat, no_telepon, tgl_lahir, jenis_kelamin, id_agen, nama_bapak)
+$stmt = $koneksi->prepare("INSERT INTO jamaah (NIK, nama_jamaah, alamat_jamaah, no_hp_jamaah, tgl_lahir_jamaah, jenis_kelamin_jamaah, id_agen, nama_bapak_jamaah)
                             VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 
 

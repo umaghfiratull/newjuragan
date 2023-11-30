@@ -205,8 +205,8 @@ include 'koneksi.php';
                                                                 keberangkatan.id_keberangkatan AS id_keberangkatan,
                                                                 master_paket.nama_paket,
                                                                 keberangkatan.tgl_keberangkatan AS tgl_keberangkatan,
-                                                                keberangkatan.status,
-                                                                master_paket.harga
+                                                                keberangkatan.status_keberangkatan,
+                                                                master_paket.harga_paket
                                                             FROM
                                                                 keberangkatan
                                                             JOIN pemesanan ON keberangkatan.id_pemesanan = pemesanan.id_pemesanan
@@ -221,10 +221,10 @@ include 'koneksi.php';
                                                     <p><?php echo $perproduk['tgl_keberangkatan']; ?></p>
                                             </td>
                                             <td>
-                                                    <p><?php echo $perproduk['status']; ?></p>
+                                                    <p><?php echo $perproduk['status_keberangkatan']; ?></p>
                                             </td>
                                             <td>
-                                                    <p><?php echo $perproduk['harga']; ?></p>
+                                                    <p><?php echo $perproduk['harga_paket']; ?></p>
                                             </td>
                                             
                                             <td>

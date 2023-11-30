@@ -25,16 +25,16 @@ $pecah=$ambil->fetch_assoc();
 <form method="post" enctype="multipart/form-data">
 	<div class="form-group">
 		  <label>Nama Mutawwif</label>
-		  <input type="text" name="nama" class="form-control" value="<?php echo $pecah['nama'];?>">
+		  <input type="text" name="nama" class="form-control" value="<?php echo $pecah['nama_mutawwif'];?>">
 	</div>
 
 	<div class="form-group">
 		<label>Keterangan</label>
-		<textarea name="ket" class="form-control" rows="10"><?php echo $pecah['keterangan']; ?></textarea>
+		<textarea name="ket" class="form-control" rows="10"><?php echo $pecah['keterangan_mutawwif']; ?></textarea>
 	</div>
 
 	<div class="form-group">
-		<img src="assets/mutawwif/<?php echo $pecah['foto']?>" width="200">
+		<img src="assets/mutawwif/<?php echo $pecah['foto_mutawwif']?>" width="200">
 	</div>
 
 	<div class="form-group">
@@ -58,18 +58,18 @@ $pecah=$ambil->fetch_assoc();
 				move_uploaded_file($lokasifoto, "assets/mutawwif/$namafoto");
 
 				$koneksi->query("UPDATE mutawwif 
-									SET nama='$_POST[nama]',
-										keterangan='$_POST[ket]',
-										foto='$namafoto'
+									SET nama_mutawwif='$_POST[nama]',
+										keterangan_mutawwif='$_POST[ket]',
+										foto_mutawwif='$namafoto'
 									WHERE id_mutawwif='$_GET[id]'");	
 			}
 
 			else
 			{
 			    $koneksi->query("UPDATE mutawwif 
-									SET nama='$_POST[nama]',
-										keterangan='$_POST[ket]',
-										foto='$namafoto'
+									SET nama_mutawwif='$_POST[nama]',
+										keterangan_mutawwif='$_POST[ket]',
+										foto_mutawwif='$namafoto'
 									WHERE id_mutawwif='$_GET[id]'");
 			}
 				echo "<script>alert('Data produk telah diubah');</script>";

@@ -223,21 +223,21 @@ include '../admin/koneksi.php';
                         <?php while ($perproduk = $ambil->fetch_assoc()) { ?>
                             
                             
-                                    <td><img src="assets/foto/<?php echo $perproduk['foto']; ?>" alt="" class="img-fluid" style="max-width: 150px; max-height: 150px;"></td>
+                                    <td><img src="assets/foto/<?php echo $perproduk['foto_barang']; ?>" alt="" class="img-fluid" style="max-width: 150px; max-height: 150px;"></td>
                                    
                                        <td> 
-                                            <h4><?php echo $perproduk['nama']; ?></h4>
+                                            <h4><?php echo $perproduk['nama_barang']; ?></h4>
                                         </td>
                                         <td>
-                                            <h4>stok: <?php echo $perproduk['stok']; ?></h4>
+                                            <h4>stok: <?php echo $perproduk['stok_barang']; ?></h4>
                                         </td>
                                         <td>
-                                            <h4>Rp. <?php echo number_format($perproduk['harga']); ?></h4>
+                                            <h4>Rp. <?php echo number_format($perproduk['harga_barang']); ?></h4>
                                         </td>
                                         <td>
-                                        <a href="ubahpaket.php?id=<?php echo $perproduk['id']; ?>" class="btn" style="background-color: #FF6E1E; color: #fff;"> <i class="fas fa-shopping-cart"></i> Edit</a>
+                                        <a href="ubahpaket.php?id=<?php echo $perproduk['id_barang']; ?>" class="btn" style="background-color: #FF6E1E; color: #fff;"> <i class="fas fa-shopping-cart"></i> Edit</a>
                                        
-                                            <a href="hapuspaket.php?id=<?php echo $perproduk['id']; ?>" class="btn btn-success"><i class="fas fa-info-circle"></i> Hapus</a>
+                                            <a href="hapuspaket.php?id=<?php echo $perproduk['id_barang']; ?>" class="btn btn-success"><i class="fas fa-info-circle"></i> Hapus</a>
                                         </td>
                                 
 

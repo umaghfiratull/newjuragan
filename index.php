@@ -274,10 +274,10 @@ line-height: normal;
 
                     <div class="col-md-3">
                         <div class="thumbnail">
-                            <img src="admin/assets/mutawwif/<?php echo $perproduk['foto']; ?>" alt="" class="img-fluid" style="max-width: 250px; max-height: 250px;">
+                            <img src="admin/assets/mutawwif/<?php echo $perproduk['foto_mutawwif']; ?>" alt="" class="img-fluid" style="max-width: 250px; max-height: 250px;">
                             <div class="caption">
-                                <h3><?php echo $perproduk['nama']; ?></h3>
-                                <h3><?php echo $perproduk['keterangan']; ?></h3>
+                                <h3><?php echo $perproduk['nama_mutawwif']; ?></h3>
+                                <h3><?php echo $perproduk['keterangan_mutawwif']; ?></h3>
                                 
                                 
                             </div>
@@ -311,12 +311,12 @@ line-height: normal;
 
                     <div class="col-md-3">
                         <div class="thumbnail">
-                            <img src="admin/assets/foto/<?php echo $perproduk['foto_produk']; ?>" alt="" class="img-fluid" style="max-width: 250px; max-height: 250px;">
+                            <img src="admin/assets/foto/<?php echo $perproduk['foto_paket']; ?>" alt="" class="img-fluid" style="max-width: 250px; max-height: 250px;">
                             <div class="caption">
                                 <h3><?php echo $perproduk['nama_paket']; ?></h3>
                                 <h5 style="color:grey;">stok: <?php echo $perproduk['lama_waktu']; ?></h5>
-                                <h5>Rp. <?php echo number_format($perproduk['harga']); ?></h5>
-                                <h3>Deskripsi Produk : <?php echo $perproduk['deskripsi_produk']; ?></h3>
+                                <h5>Rp. <?php echo number_format($perproduk['harga_paket']); ?></h5>
+                                <h3>Deskripsi Produk : <?php echo $perproduk['deskripsi_paket']; ?></h3>
                                 <!-- <a href="beli.php?id=<?php echo $perproduk['id_paket']; ?>" class="btn" style="background-color: #FF6E1E; color: #fff;"> <i class="fas fa-shopping-cart"></i> Beli</a> -->
                                 <a href="detail.php?id=<?php echo $perproduk['id_paket']; ?>" class="btn btn-success"><i class="fas fa-info-circle"></i> Detail</a>
                             </div>

@@ -35,7 +35,7 @@ $pecah=$ambil->fetch_assoc();
 
 	<div class="form-group">
 		  <label>Harga (Rp)</label>
-		  <input type="number" class="form-control" name="harga" value="<?php echo $pecah['harga'];?>">
+		  <input type="number" class="form-control" name="harga" value="<?php echo $pecah['harga_paket'];?>">
 	</div>
 
 	<div class="form-group">
@@ -49,7 +49,7 @@ $pecah=$ambil->fetch_assoc();
 	</div>
 
 	<div class="form-group">
-		<img src="assets/foto/<?php echo $pecah['foto_produk']?>" width="200">
+		<img src="assets/foto/<?php echo $pecah['foto_paket']?>" width="200">
 	</div>
 
 	<div class="form-group">
@@ -59,7 +59,7 @@ $pecah=$ambil->fetch_assoc();
 
 	<div class="form-group">
 		<label>Deskripsi</label>
-		<textarea name="deskripsi" class="form-control" rows="10"><?php echo $pecah['deskripsi_produk']; ?></textarea>
+		<textarea name="deskripsi" class="form-control" rows="10"><?php echo $pecah['deskripsi_paket']; ?></textarea>
 	</div>
 	<button class="btn btn-primary" name="ubah"><i class="bi bi-floppy"></i> Simpan</button>
 	<button ><a href="paket.php" class="btn_cancel">cancel</a></button>
@@ -80,25 +80,25 @@ $pecah=$ambil->fetch_assoc();
 				$koneksi->query("UPDATE master_paket 
 									SET nama_paket='$_POST[nama]',
 										pilihan_paket='$_POST[paket]',
-										harga='$_POST[harga]',
+										harga_paket='$_POST[harga]',
 										lama_waktu='$_POST[lama]',
 										seat='$_POST[sit]',
-										foto_produk='$namafoto',
-										deskripsi_produk='$_POST[deskripsi]' 
+										foto_paket='$namafoto',
+										deskripsi_paket='$_POST[deskripsi]' 
 									WHERE id_paket='$_GET[id]'");	
 			}
 
 			else
 			{
 			    $koneksi->query("UPDATE master_paket 
-			                        SET nama_paket='$_POST[nama]',
-			                            pilihan_paket='$_POST[paket]',
-			                            harga='$_POST[harga]',
-			                            lama_waktu='$_POST[lama]',
-			                            seat='$_POST[sit]',
-			                            foto_produk='$pecah[foto_produk]',
-			                            deskripsi_produk='$_POST[deskripsi]' 
-			                        WHERE id_paket='$_GET[id]'");
+									SET nama_paket='$_POST[nama]',
+										pilihan_paket='$_POST[paket]',
+										harga_paket='$_POST[harga]',
+										lama_waktu='$_POST[lama]',
+										seat='$_POST[sit]',
+										foto_paket='$namafoto',
+										deskripsi_paket='$_POST[deskripsi]' 
+									WHERE id_paket='$_GET[id]'");	
 			}
 				echo "<script>alert('Data produk telah diubah');</script>";
 				echo "<script>location='paket.php';</script>";

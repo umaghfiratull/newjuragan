@@ -1,7 +1,7 @@
 <?php
 session_start();
 // Skrip Koneksi
-include '../admin/koneksi.php';
+include 'koneksi.php';
 ?>
 
 <!DOCTYPE html>
@@ -11,9 +11,9 @@ include '../admin/koneksi.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paket Perjalanan</title>
+    <title>Pemesanan</title>
     <!-- ======= Styles ====== -->
-    <link rel="stylesheet" href="assets/css/pakets.css">
+    <link rel="stylesheet" href="assets/css/pemesanans.css">
     
 </head>
 
@@ -31,15 +31,15 @@ include '../admin/koneksi.php';
                 </li>
 
                 <li>
-                    <a href="dbadmin.php">
+                    <a href="detailpemesanan.php">
                         <span class="icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </span>
-                        <span class="title">Dashboard</span>
+                        <span class="title">Detail Pemesanan</span>
                     </a>
                 </li>
 
-                <li>
+                <!-- <li>
                     <a href="datajamaah.php">
                         <span class="icon">
                             <ion-icon name="people-outline"></ion-icon>
@@ -118,7 +118,7 @@ include '../admin/koneksi.php';
                         </span>
                         <span class="title">Laporan</span>
                     </a>
-                </li>
+                </li> -->
             </ul>
         </div>
 
@@ -147,7 +147,7 @@ include '../admin/koneksi.php';
 
             <!-- ======================= Cards ================== -->
             <div class="kontainer">
-                <h2>Paket Perjalanan</h2>
+                <h2>Detail Pemesanan</h2>
                 <div class="cardBox">
                     <div class="searchpesanan">
                         <label>
@@ -156,20 +156,20 @@ include '../admin/koneksi.php';
                         </label>
                     </div>
 
-                    <div class="btntambah">
-                        <a href="tambahpaket.php">Tambah Pesanan</a>
-                    </div>
+                    <!-- <div class="btntambah">
+                        <a href="tambahpemesanan.php">Tambah Pesanan</a>
+                    </div> -->
 
-                    <!-- <div class="btnedit">
+                    <div class="btnedit">
                         <ion-icon name="pencil-outline"></ion-icon>
-                        <a href="#">Edit</a>
+                        <a href="pemesanan.php">Kembali</a>
                     </div>
-
+<!-- 
                     <div class="btnhapus">
                         <ion-icon name="trash-outline"></ion-icon>
                         <a href="#">hapus</a>
-                    </div> -->
-
+                    </div>
+ -->
                 </div>
                 <!-- <div class="cardBox">
                     <div class="searchjamaah">
@@ -208,47 +208,70 @@ include '../admin/koneksi.php';
             <div class="details">
                 <div class="recentOrders">
                     <div class="col-xs-8 col-xs-offset-2 well">
-                    <table class="table table-scroll table-striped" border="1">
+                    <table class="table table-scroll table-striped">
                     <thead>
                                 <tr>
-                                    <td>Gambar Paket</td>
-                                    <td>Nama Paket</td>
-                                    <td>stock</td>
-                                    <td>hharga</td>
-                                    <td>deskripsi</td>
+                                    <td>No</td>
+                                    <td>Nama Jamaah</td>
+                                    <td>Paket</td>
+                                    <td>Jenis Pembayaran</td>
+                                    <td>Tanggal</td>
+                                    <td>status</td>
+                                    <td>Dp</td>
+                                    <td>Sisa</td>
                                     <td>aksi</td>
                                 </tr>
                             </thead>
-                        <tbody><tr>
-                        <?php $ambil = $koneksi->query("SELECT * FROM master_paket"); ?>
-                        <?php while ($perproduk = $ambil->fetch_assoc()) { ?>
-                            
-                            
-                                    <td><img src="assets/foto/<?php echo $perproduk['foto_paket']; ?>" alt="" class="img-fluid" style="max-width: 150px; max-height: 150px;"></td>
-                                   
-                                       <td> 
-                                            <h4><?php echo $perproduk['nama_paket']; ?></h4>
-                                        </td>
-                                        <td>
-                                            <h4>stok: <?php echo $perproduk['lama_waktu']; ?></h4>
-                                        </td>
-                                        <td>
-                                            <h4>Rp. <?php echo number_format($perproduk['harga_paket']); ?></h4>
-                                        </td>
-                                        <td>
-                                            <h4><?php echo $perproduk['deskripsi_paket']; ?></h4>
-                                        </td>
-                                        <td>
-                                        <a href="ubahpaket.php?id=<?php echo $perproduk['id_paket']; ?>" class="btn" style="background-color: #FF6E1E; color: #fff;"> <i class="fas fa-shopping-cart"></i> Edit</a>
-                                       
-                                            <a href="hapuspaket.php?id=<?php echo $perproduk['id_paket']; ?>" class="btn btn-success"><i class="fas fa-info-circle"></i> Hapus</a>
-                                        </td>
-                                
-
-
-                            </div>
-                            </tr>
-                        <?php } ?>
+                        <tbody>
+                        <?php $nomor = 1; ?>
+                            <?php $ambil = $koneksi->query("SELECT
+                                                                pemesanan.id_pemesanan,
+                                                                jamaah.nama_jamaah,
+                                                                master_paket.nama_paket,
+                                                                pemesanan.jenis_pembayaran,
+                                                                pemesanan.tgl_pemesanan,
+                                                                detail_pemesanan.status_pemesanan,
+                                                                pemesanan.Dp_pembayaran,
+                                                                pemesanan.sisa_pembayaran
+                                                                
+                                                            FROM
+                                                                pemesanan
+                                                            LEFT JOIN
+                                                                jamaah ON pemesanan.NIK = jamaah.NIK
+                                                            LEFT JOIN
+                                                                detail_pemesanan ON pemesanan.id_pemesanan = detail_pemesanan.id_pemesanan
+                                                            LEFT JOIN
+                                                                master_paket ON pemesanan.id_paket = master_paket.id_paket"); ?>
+                            <?php while ($pecah = $ambil->fetch_assoc()) { ?>
+                                <tr>
+                                    <td>
+                                        <?php echo $nomor; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $pecah['nama_jamaah']; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $pecah['nama_paket']; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $pecah['jenis_pembayaran']; ?>
+                                    </td>
+                                    <td> 
+                                        <?php echo $pecah['tgl_pemesanan']; ?>
+                                    </td>
+                                    <td><?php echo $pecah['status_pemesanan']; ?></td>
+                                    <td>
+                                        Rp. <?php echo number_format($pecah['Dp_pembayaran']); ?>
+                                    </td>
+                                    <td>
+                                        Rp. <?php echo number_format($pecah['sisa_pembayaran']); ?>
+                                    </td>
+                                    <td>
+                                        <a href="deleteaksi.php?id=$d[id_pemesanan]\" onclik="return confirm ('Apakahh anda yakin ingin menghapus data $d[nama_lengkap]?')">Hapus</a>
+                                    </td>
+                                </tr>
+                                <?php $nomor++; ?>
+                            <?php } ?>
                         </tbody>
                     </table>
                     </div>

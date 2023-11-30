@@ -156,7 +156,7 @@ if (!isset($_SESSION['admin'])) {
                 <div class="card">
                     <div>
                     <?php $ambil = $koneksi->query("SELECT DATE_FORMAT(tgl_pemesanan, '%Y-%m-%d') AS tanggal, 
-                    SUM(Dp) AS total_pemasukan FROM pemesanan WHERE tgl_pemesanan"); ?>
+                    SUM(Dp_pembayaran) AS total_pemasukan FROM pemesanan WHERE tgl_pemesanan"); ?>
 
                     <?php while ($pecah = $ambil->fetch_assoc()) { ?>
                         <div class="numbers">Rp.<?php echo number_format($pecah['total_pemasukan']); ?></div>
@@ -170,8 +170,8 @@ if (!isset($_SESSION['admin'])) {
 
                 <div class="card">
                     <div>
-                    <?php $ambil = $koneksi->query("SELECT DATE_FORMAT(tanggal, '%Y-%m-%d') AS tanggal,
-                    SUM(total_pengeluaran) AS total_pengeluaran FROM pengeluaran WHERE tanggal"); ?>
+                    <?php $ambil = $koneksi->query("SELECT DATE_FORMAT(tgl_pengeluaran, '%Y-%m-%d') AS tanggal,
+                    SUM(total_pengeluaran) AS total_pengeluaran FROM pengeluaran WHERE tgl_pengeluaran"); ?>
 
                     <?php while ($pecah = $ambil->fetch_assoc()) { ?>
                         <div class="numbers">Rp.<?php echo number_format($pecah['total_pengeluaran']); ?></div>
@@ -199,15 +199,15 @@ if (!isset($_SESSION['admin'])) {
                             </thead>
                         <tbody>
                             <?php $ambil = $koneksi->query("SELECT master_paket.id_paket,
-                            master_paket.nama_paket, master_paket.harga, master_paket.pilihan_paket,
+                            master_paket.nama_paket, master_paket.harga_paket, master_paket.pilihan_paket,
                             COUNT(pemesanan.id_pemesanan) AS jumlah_pemesanan FROM master_paket 
                             LEFT OUTER JOIN pemesanan ON master_paket.id_paket = pemesanan.id_paket 
-                            GROUP BY master_paket.id_paket, master_paket.nama_paket, master_paket.harga, master_paket.pilihan_paket
+                            GROUP BY master_paket.id_paket, master_paket.nama_paket, master_paket.harga_paket, master_paket.pilihan_paket
                             ORDER BY master_paket.id_paket DESC LIMIT 10"); ?>
                             <?php while ($pecah = $ambil->fetch_assoc()) { ?>
                                 <tr>
                                     <td><h4 class="wrap"><?php echo $pecah['nama_paket']; ?> </h4></td>
-                                    <td>Rp. <?php echo number_format($pecah['harga']); ?></td>
+                                    <td>Rp. <?php echo number_format($pecah['harga_paket']); ?></td>
                                     <td><?php echo $pecah['pilihan_paket']; ?></td>
                                     <td>
                                         <!-- <a href="#" onclik="return confirm ('Apakahh anda yakin ingin menghapus data $d[nama]?')">Detail</a> -->
@@ -233,23 +233,22 @@ if (!isset($_SESSION['admin'])) {
                     <table>
                         <?php $nomor = 1; ?>
                             <?php $ambil = $koneksi->query("SELECT 
-    mp.nama_paket AS Nama_Paket, 
-    k.tgl_keberangkatan AS Tanggal_Keberangkatan, 
-    COUNT(p.id_pemesanan) AS Jumlah_Jamaah
-FROM 
-    keberangkatan k
-LEFT JOIN 
-    pemesanan p ON k.id_pemesanan = p.id_pemesanan
-LEFT JOIN 
-    master_paket mp ON k.id_paket = mp.id_paket
-WHERE 
-    k.tgl_keberangkatan >= CURDATE()
-GROUP BY 
-    mp.nama_paket, k.tgl_keberangkatan
-ORDER BY 
-    k.tgl_keberangkatan
-LIMIT 3;
-;"); ?>
+                                                                mp.nama_paket AS Nama_Paket, 
+                                                                k.tgl_keberangkatan AS Tanggal_Keberangkatan, 
+                                                                COUNT(p.id_pemesanan) AS Jumlah_Jamaah
+                                                            FROM 
+                                                                keberangkatan k
+                                                            LEFT JOIN 
+                                                                pemesanan p ON k.id_pemesanan = p.id_pemesanan
+                                                            LEFT JOIN 
+                                                                master_paket mp ON k.id_paket = mp.id_paket
+                                                            WHERE 
+                                                                k.tgl_keberangkatan >= CURDATE()
+                                                            GROUP BY 
+                                                                mp.nama_paket, k.tgl_keberangkatan
+                                                            ORDER BY 
+                                                                k.tgl_keberangkatan
+                                                            LIMIT 3;"); ?>
                             <?php while ($pecah = $ambil->fetch_assoc()) { ?>
                                 <tr>
                                     <!-- <td><?php echo $pecah['Nama_Paket']; ?></td>

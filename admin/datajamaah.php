@@ -171,7 +171,7 @@ if (!isset($_SESSION['admin'])) {
                         <div class="cardjamaah">
                             <div>
                                 <?php $ambil = $koneksi->query("SELECT COUNT(*) AS jumlah_pria
-                                 FROM jamaah WHERE jenis_kelamin = 'laki-laki'"); ?>
+                                 FROM jamaah WHERE jenis_kelamin_jamaah = 'laki-laki'"); ?>
 
                                 <?php while ($pecah = $ambil->fetch_assoc()) { ?>
                                      <div class="cardName">Laki-Laki</div>
@@ -182,7 +182,7 @@ if (!isset($_SESSION['admin'])) {
                         <div class="cardjamaah">
                             <div>
                                 <?php $ambil = $koneksi->query("SELECT COUNT(*) AS jumlah_pria
-                                 FROM jamaah WHERE jenis_kelamin = 'perempuan'"); ?>
+                                 FROM jamaah WHERE jenis_kelamin_jamaah = 'perempuan'"); ?>
                                 <?php while ($pecah = $ambil->fetch_assoc()) { ?>
                                      <div class="cardName">Perempuan</div>
                                     <div class="numbers"><?php echo number_format($pecah['jumlah_pria']); ?></div>
@@ -229,22 +229,22 @@ if (!isset($_SESSION['admin'])) {
                                             <h4><?php echo $perproduk['NIK']; ?></h4>
                                         </td>
                                         <td>
-                                            <h4><?php echo $perproduk['nama_lengkap']; ?></h4>
+                                            <h4><?php echo $perproduk['nama_jamaah']; ?></h4>
                                         </td>
                                         <td>
-                                            <h4><?php echo $perproduk['alamat']; ?></h4>
+                                            <h4><?php echo $perproduk['alamat_jamaah']; ?></h4>
                                         </td>
                                         <td>
-                                            <h4><?php echo $perproduk['no_telepon']; ?></h4>
+                                            <h4><?php echo $perproduk['no_hp_jamaah']; ?></h4>
                                             </td>
                                         <td>
-                                                <p><?php echo $perproduk['tgl_lahir']; ?></p>
+                                                <p><?php echo $perproduk['tgl_lahir_jamaah']; ?></p>
                                         </td>
                                         <td>
-                                                <p><?php echo $perproduk['jenis_kelamin']; ?></p>
+                                                <p><?php echo $perproduk['jenis_kelamin_jamaah']; ?></p>
                                         </td>
                                         <td>
-                                                <p><?php echo $perproduk['nama_bapak']; ?></p>
+                                                <p><?php echo $perproduk['nama_bapak_jamaah']; ?></p>
                                         </td>
                                         <td>
                                             <a href="ubahjamaah.php?id=<?php echo $perproduk['NIK']; ?>" class="btn" style="background-color: #FF6E1E; color: #fff;"> <i class="fas fa-shopping-cart"></i> Edit</a>

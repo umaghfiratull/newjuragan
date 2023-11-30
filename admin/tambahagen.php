@@ -54,7 +54,7 @@ if (!isset($_SESSION["admin"])) {
 <?php
 if (isset($_POST['save'])) {
     // Prepare the SQL statement
-$stmt = $koneksi->prepare("INSERT INTO agen (nama, email, password)
+$stmt = $koneksi->prepare("INSERT INTO agen (nama, email, pass_agen)
                             VALUES (?, ?, ?)");
 
 

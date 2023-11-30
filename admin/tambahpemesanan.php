@@ -34,107 +34,109 @@ if (!isset($_SESSION["admin"])) {
 
 <form method="post" enctype="multipart/form-data">
     <div class="form-group">
-        <label>Nama Jamaah</label>
+        <label>ID Kependudukan</label>
         <?php
-            echo "<select name=nama>
-                    <option selected> Pilih Paket Keberangkatan </option>";
+            echo "<select name=nik>
+                    <option selected> Pilih Nama jamaah </option>";
                     $sql="SELECT * FROM jamaah";
                     if (!$result = $koneksi->query($sql)) {
                         die('There was an error running the query [' .$koneksi->error. ']');
                     }
                     while ($d=$result->fetch_assoc()) {
-                        echo "<option value=$d[NIK] > $d[NIK] - $d[nama_lengkap]</option>";
+                        echo "<option value=$d[NIK] > $d[NIK] - $d[nama_jamaah]</option>";
                     }
             echo "</select>"
         ?>
     </div>
 
     <div class="form-group">
-        <label>Pilih Paket</label>
+        <label>ID Paket</label>
         <?php
             echo "<select name=paket>
-                    <option selected> Pilih Paket Keberangkatan </option>";
+                    <option selected> Pilih Nama paket</option>";
                     $sql="SELECT * FROM master_paket";
                     if (!$result = $koneksi->query($sql)) {
                         die('There was an error running the query [' .$koneksi->error. ']');
                     }
                     while ($d=$result->fetch_assoc()) {
-                        echo "<option value=$d[id_paket] > $d[nama_paket]</option>";
+                        echo "<option value=$d[id_paket] > $d[id_paket] - $d[nama_paket]</option>";
                     }
             echo "</select>"
         ?>
     </div>
-
-    <div class="form-group">
-        <label>tanggal keberangkatan</label>
-        <?php
-            echo "<select name=tgl>
-                    <option selected> Pilih Paket Keberangkatan </option>";
-                    $sql="SELECT * FROM master_paket";
-                    if (!$result = $koneksi->query($sql)) {
-                        die('There was an error running the query [' .$koneksi->error. ']');
-                    }
-                    while ($d=$result->fetch_assoc()) {
-                        echo "<option value=$d[id_paket] > $d[tgl_pkt]</option>";
-                    }
-            echo "</select>"
-        ?>
+	
+	<div class="form-group">
+        <label>Tanggal Pemesaanan</label>
+        <input type="date" class="form-control" name="tglpem">
     </div>
 
     <div class="form-group">
-        <label>Status</label>
+        <label>Ukuran Baju</label>
         <?php
-            echo "<select name=stts>
-                        <option selected>Pilih Status Keberangkatan</option>
-                        <option value='1'>Belum Berangkat</option>
-                        <option value='2'>Sedang Berangkat</option>
-                        <option value='3'>Selesai Berangkat</option>
+            echo "<select name=baju>
+                        <option selected>Pilih Ukuran Baju</option>
+                        <option value='1'>Dewasa-XXXL</option>
+                        <option value='2'>Dewasa-XXL</option>
+                        <option value='3'>Dewasa-XL</option>
+                        <option value='4'>Dewasa-L</option>
+                        <option value='5'>Dewasa-M</option>
+                        <option value='6'>Dewasa-S</option>
+                        <option value='7'>Dewasa-XS</option>
+                        <option value='8'>Anak-XXXL</option>
+                        <option value='9'>Anak-XXL</option>
+                        <option value='10'>Anak-XL</option>
+                        <option value='11'>Anak-L</option>
+                        <option value='12'>Anak-M</option>
+                        <option value='13'>Anak-S</option>
+                        <option value='14'>Anak-XS</option>
+                        </select>";
+        ?>
+    </div>
+    <div class="form-group">
+        <label>Jenis Pembayaran</label>
+        <?php
+            echo "<select name=jnspem>
+                        <option selected>Pilih Jenis Pembayaran</option>
+                        <option value='1'>Cash</option>
+                        <option value='2'>Transfer Bank</option>
                     </select>";
         ?>
     </div>
 
     <div class="form-group">
         <label>Dp</label>
-        <input type="number" class="form-control" name="sit">
+        <input type="number" class="form-control" name="dp">
     </div>
 
     <div class="form-group">
         <label>Sisa</label>
-        <input type="number" class="form-control" name="sit">
+        <input type="number" class="form-control" name="sisa">
     </div>
-
-    <!-- <div>
+	
+	<div class="form-group">
+        <label>Agen Keberangkatan</label>
         <?php
-                    $sql="SELECT harga FROM master_paket WHERE id_paket=''";
+            echo "<select name=agen>
+                    <option selected> Pilih Nama Agen </option>";
+                    $sql="SELECT * FROM agen";
                     if (!$result = $koneksi->query($sql)) {
                         die('There was an error running the query [' .$koneksi->error. ']');
+                    }
+                    while ($d=$result->fetch_assoc()) {
+                        echo "<option value=$d[id_agen] > $d[id_agen] - $d[nama]</option>";
                     }
             echo "</select>"
         ?>
     </div>
 
-    <script>
-        function performSubtraction() {
-            // Get the values from the input fields
-            var value1 = parseFloat(document.getElementById('sit').value) || 0;
-            var value2 = parseFloat(document.getElementById('input2').value) || 0;
-
-            // Perform the subtraction
-            var result = value1 - value2;
-
-            // Display the result in the 'result' input field
-            document.getElementById('result').value = result;
-        }
-    </script> -->
-
     <button class="btn btn-primary" name="save">Simpan</button>
-    <button ><a href="paket.php" class="btn_cancel">cancel</a></button>
+    <button ><a href="pemesanan.php" class="btn_cancel">cancel</a></button>
 </form>
 
 <?php
 if (isset($_POST['save'])) {
     // Prepare the SQL statement
-    $stmt = $koneksi->prepare("INSERT INTO pemesanan (nama_paket, pilihan_paket, harga, lama_waktu, seat, foto_produk, deskripsi_produk) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $stmt = $koneksi->prepare("INSERT INTO pemesanan (NIK, tgl_pemesanan, ukuran_baju, jenis_pembayaran, Dp_pembayaran, sisa_pembayaran) VALUES (?, ?, ?, ?, ?, ?)");
 
     // Check if the prepare statement was successful
     if (!$stmt) {
@@ -142,7 +144,7 @@ if (isset($_POST['save'])) {
     }
 
     // Bind the parameters
-    $success = $stmt->bind_param("ssiiiss", $_POST['nama'], $_POST['paket'], $_POST['harga'], $_POST['lama'], $_POST['sit'], $nama, $_POST['deskripsi']);
+    $success = $stmt->bind_param("ssiiii", $_POST['nik'], $_POST['tglpem'], $_POST['baju'], $_POST['jnspem'], $_POST['dp'], $_POST['sisa']);
 
     // Check if binding parameters was successful
     if (!$success) {
@@ -155,7 +157,7 @@ if (isset($_POST['save'])) {
     // Check if execution was successful
     if ($success) {
         echo "<div class='alert alert-info'>Data tersimpan</div>";
-        echo "<script>location='paket.php';</script>";
+        echo "<script>location='pemesanan.php';</script>";
     } else {
         die("Error executing statement: " . $stmt->error);
     }

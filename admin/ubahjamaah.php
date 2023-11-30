@@ -30,29 +30,29 @@ $pecah=$ambil->fetch_assoc();
 
 	<div class="form-group">
 		  <label>Nama Jamaah</label>
-		  <input type="text" name="nama" class="form-control" value="<?php echo $pecah['nama_lengkap'];?>">
+		  <input type="text" name="nama" class="form-control" value="<?php echo $pecah['nama_jamaah'];?>">
 	</div>
 
 	<div class="form-group">
 		<label>alamat</label>
-		<textarea name="almt" class="form-control" rows="10"><?php echo $pecah['alamat']; ?></textarea>
+		<textarea name="almt" class="form-control" rows="10"><?php echo $pecah['alamat_jamaah']; ?></textarea>
 	</div>
 
 	<div class="form-group">
 		  <label>No Telepon / WA</label>
-		  <input type="number" name="tlp" class="form-control" value="<?php echo $pecah['no_telepon'];?>">
+		  <input type="number" name="tlp" class="form-control" value="<?php echo $pecah['no_hp_jamaah'];?>">
 	</div>
 	<div class="form-group">
 		  <label>Tanggal Lahir</label>
-		  <input type="date" name="tgllhr" class="form-control" value="<?php echo $pecah['tgl_lahir'];?>">
+		  <input type="date" name="tgllhr" class="form-control" value="<?php echo $pecah['tgl_lahir_jamaah'];?>">
 	</div>
 	<div class="form-group">
 		  <label>Jenis Kelamin</label>
-		  <input type="text" name="jnskel" class="form-control" value="<?php echo $pecah['jenis_kelamin'];?>">
+		  <input type="text" name="jnskel" class="form-control" value="<?php echo $pecah['jenis_kelamin_jamaah'];?>">
 	</div>
 	<div class="form-group">
 		  <label>Nama Ayah</label>
-		  <input type="text" name="ortu" class="form-control" value="<?php echo $pecah['nama_bapak'];?>">
+		  <input type="text" name="ortu" class="form-control" value="<?php echo $pecah['nama_bapak_jamaah'];?>">
 	</div>
 	<div class="form-group">
         <label>Nama Agen</label>
@@ -89,12 +89,12 @@ $pecah=$ambil->fetch_assoc();
 
 				$koneksi->query("UPDATE jamaah 
 								SET NIK='$_POST[nik]',
-									nama_lengkap='$_POST[nama]',
-									alamat='$_POST[almt]',
-									no_telepon='$_POST[tlp]',
-									tgl_lahir='$_POST[tgllhr]',
-									jenis_kelamin='$_POST[jnskel]',
-									nama_bapak='$_POST[ortu]',
+									nama_jamaah='$_POST[nama]',
+									alamat_jamaah='$_POST[almt]',
+									no_hp_jamaah='$_POST[tlp]',
+									tgl_lahir_jamaah='$_POST[tgllhr]',
+									jenis_kelamin_jamaah='$_POST[jnskel]',
+									nama_bapak_jamaah='$_POST[ortu]',
 									id_agen='$_POST[agen]'
 								WHERE NIK='$_GET[id]'");	
 			}
@@ -103,12 +103,12 @@ $pecah=$ambil->fetch_assoc();
 			{
 			    $koneksi->query("UPDATE jamaah 
 								SET NIK='$_POST[nik]',
-									nama_lengkap='$_POST[nama]',
-									alamat='$_POST[almt]',
-									no_telepon='$_POST[tlp]',
-									tgl_lahir='$_POST[tgllhr]',
-									jenis_kelamin='$_POST[jnskel]',
-									nama_bapak='$_POST[ortu]',
+									nama_jamaah='$_POST[nama]',
+									alamat_jamaah='$_POST[almt]',
+									no_hp_jamaah='$_POST[tlp]',
+									tgl_lahir_jamaah='$_POST[tgllhr]',
+									jenis_kelamin_jamaah='$_POST[jnskel]',
+									nama_bapak_jamaah='$_POST[ortu]',
 									id_agen='$_POST[agen]'
 								WHERE NIK='$_GET[id]'");
 			}

@@ -222,15 +222,15 @@ include '../admin/koneksi.php';
                         <?php while ($perorang = $ambil->fetch_assoc()) { ?>
                             
                                         <td> 
-                                            <h3><?php echo $perorang['nama']; ?></h3>
+                                            <h3><?php echo $perorang['nama_mutawwif']; ?></h3>
                                         </td>
                                         <td>
-                                            <img src="assets/foto/<?php echo $perorang['foto']; ?>" alt="" class="img-fluid" style="max-width: 250px; max-height: 250px;">
+                                            <img src="assets/foto/<?php echo $perorang['foto_mutawwif']; ?>" alt="" class="img-fluid" style="max-width: 250px; max-height: 250px;">
                                         </td>
                                    
                                        
                                         <td>
-                                            <h3 class="wrap" contenteditable="true"><?php echo $perorang['keterangan']; ?></h3>
+                                            <h3 class="wrap" contenteditable="true"><?php echo $perorang['keterangan_mutawwif']; ?></h3>
                                         </td>
                                         <td>
                                         <a href="ubahmutawwif.php?id=<?php echo $perorang['id_mutawwif']; ?>" class="btn" style="background-color: #FF6E1E; color: #fff;"> <i class="fas fa-shopping-cart"></i> Edit</a>

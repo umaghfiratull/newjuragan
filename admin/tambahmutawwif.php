@@ -59,7 +59,7 @@ if (isset($_POST['save'])) {
     move_uploaded_file($lokasi, "assets/mutawwif/" . $nama);
 
     // Prepare the SQL statement
-    $stmt = $koneksi->prepare("INSERT INTO mutawwif (nama, keterangan, foto) VALUES (?, ?, ?)");
+    $stmt = $koneksi->prepare("INSERT INTO mutawwif (nama_mutawwif, keterangan_mutawwif, foto_mutawwif) VALUES (?, ?, ?)");
 
     // Check if the prepare statement was successful
     if (!$stmt) {
