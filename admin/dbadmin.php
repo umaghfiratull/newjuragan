@@ -194,7 +194,7 @@ if (!isset($_SESSION['admin'])) {
                                     <td>Paket Populer</td>
                                     <td>Harga</td>
                                     <td>Kategori</td>
-                                    <td>aksi</td>
+                                    <td>Aksi</td>
                                 </tr>
                             </thead>
                         <tbody>
@@ -210,7 +210,8 @@ if (!isset($_SESSION['admin'])) {
                                     <td>Rp. <?php echo number_format($pecah['harga']); ?></td>
                                     <td><?php echo $pecah['pilihan_paket']; ?></td>
                                     <td>
-                                        <a href="deleteaksi.php?id=$d[id]\" onclik="return confirm ('Apakahh anda yakin ingin menghapus data $d[nama]?')">Detail</a>
+                                        <!-- <a href="#" onclik="return confirm ('Apakahh anda yakin ingin menghapus data $d[nama]?')">Detail</a> -->
+                                        <a href="#">Detail</a>
                                     </td>
                                 </tr>
                             <?php } ?>

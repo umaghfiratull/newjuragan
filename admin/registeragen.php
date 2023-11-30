@@ -102,7 +102,7 @@ if (isset($_POST["daftar"])) {
             echo "<script>alert('Konfirmasi password tidak sesuai');</script>";
         } else {
             // Cek apakah email sudah digunakan
-            $stmt = $koneksi->prepare("SELECT * FROM admin WHERE email=?");
+            $stmt = $koneksi->prepare("SELECT * FROM agen WHERE email=?");
             $stmt->bind_param("s", $email);
             $stmt->execute();
             $result = $stmt->get_result();
@@ -112,7 +112,7 @@ if (isset($_POST["daftar"])) {
                 echo "<script>alert('Pendaftaran gagal, email sudah digunakan');</script>";
             } else {
                 // Insert data pelanggan
-                $stmt = $koneksi->prepare("INSERT INTO agen(nama, email, password) VALUES (?, ?, ?)");
+                $stmt = $koneksi->prepare("INSERT INTO agen(nama, email, pass_agen) VALUES (?, ?, ?)");
                 $stmt->bind_param("sss", $nama, $email, $password);
                 $stmt->execute();
                 $stmt->close();

@@ -31,7 +31,7 @@ include '../admin/koneksi.php';
                 </div>
                 <div class="form-content">
                 <div class="headerlogin">
-                    <header>Masuk Sebagai Admin</header>
+                    <header>Masuk Sebagai Agen</header>
                     </div>
                     <form method="POST">
                         <div class="field input-field">
@@ -82,7 +82,7 @@ include '../admin/koneksi.php';
 
         <?php
             if (isset($_POST['login'])) {
-              $ambil = $koneksi->query("SELECT * FROM agen WHERE email='$_POST[email]' AND password ='$_POST[pass]'");
+              $ambil = $koneksi->query("SELECT * FROM agen WHERE email='$_POST[email]' AND pass_agen ='$_POST[pass]'");
               $yangcocok = $ambil->num_rows;
               if ($yangcocok == 1) {
                 $_SESSION['admin'] = $ambil->fetch_assoc();
