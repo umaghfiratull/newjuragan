@@ -23,22 +23,27 @@ $pecah=$ambil->fetch_assoc();
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
 <form method="post" enctype="multipart/form-data">
-    <div class="form-group">
-        <label>Nama Agen</label>
-        <input type="text" class="form-control" name="nama">
-    </div>
+	<div class="form-group">
+		  <label>Nama Agen</label>
+		  <input type="text" name="namas" class="form-control" value="<?php echo $pecah['nama'];?>">
+	</div>
 
-    <div class="form-group">
-        <label>Email</label>
-        <input type="email" class="form-control" name="email">
-    </div>
+	<div class="form-group">
+		<label>Email</label>
+		<textarea name="email" class="form-control"><?php echo $pecah['email']; ?></textarea>
+	</div>
+	<div class="form-group">
+		  <label>Password</label>
+		  <input type="text" name="pass" class="form-control" value="<?php echo $pecah['pass_agen'];?>">
+	</div>
+	<div class="form-group">
+		  <label>Reward</label>
+		  <input type="number" name="rewards" class="form-control" value="<?php echo $pecah['reward'];?>">
+	</div>
 
-    <div class="form-group">
-        <label>Password</label>
-        <input type="text" class="form-control" name="pass">
-    </div>
-    <button class="btn btn-primary" name="ubah">Simpan</button>
-    <button ><a href="dataagen.php" class="btn_cancel">cancel</a></button>
+	
+	<button class="btn btn-primary" name="ubah"><i class="bi bi-floppy"></i> Simpan</button>
+	<button ><a href="dataagen.php" class="btn_cancel">cancel</a></button>
 </form>
 
 <?php
@@ -53,22 +58,24 @@ $pecah=$ambil->fetch_assoc();
 			{
 				move_uploaded_file($lokasifoto, "assets/agen/$namafoto");
 
-				$koneksi->query("UPDATE agen 
-								SET nama='$_POST[nama]',
-									email='$_POST[email]',
-									password='$_POST[pass]',
+				$koneksi->query("UPDATE agen
+								SET nama='$_POST[namas]',
+								email='$_POST[email]',
+									pass_agen='$_POST[pass]',
+									reward='$_POST[rewards]'
 									WHERE nama='$_GET[id]'");	
 			}
 
 			else
 			{
-			    $koneksi->query("UPDATE agen 
-								SET nama='$_POST[nama]',
-									email='$_POST[email]',
-									password='$_POST[pass]',
-									WHERE nama='$_GET[id]'");
+			    $koneksi->query("UPDATE agen
+				SET nama='$_POST[namas]',
+				email='$_POST[email]',
+					pass_agen='$_POST[pass]',
+					reward='$_POST[rewards]'
+					WHERE nama='$_GET[id]'");
 			}
-				echo "<script>alert('Data Agen telah diubah');</script>";
+				echo "<script>alert('Data produk telah diubah');</script>";
 				echo "<script>location='dataagen.php';</script>";
 
 		}?>

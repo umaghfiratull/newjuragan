@@ -1,4 +1,4 @@
-<h2>Ubah Data Jamaah</h2>
+<h2>Ubah Produk</h2>
 <?php
 include 'koneksi.php';
 $ambil=$koneksi->query("SELECT * FROM jamaah WHERE NIK='$_GET[id]'");

@@ -1,3 +1,9 @@
+<?php
+session_start();
+// Skrip Koneksi
+include 'koneksi.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +11,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Jamaah</title>
+    <title>Informasi Keberangkatan</title>
     <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="assets/css/datajamaah.css">
 </head>
@@ -140,7 +146,7 @@
 
             <!-- ======================= Cards ================== -->
             <div class="kontainer">
-                <h2>Informasi Seluruh Keberangkatan</h2>
+                <h2>Informasi Keberangkatan</h2>
                 <div class="cardBox">
                     <div class="searchjamaah">
                         <label>
@@ -153,6 +159,7 @@
                         <a href="#">Cari Berdasarkan Tanggal
                         </a>
                     </div>
+
                     <div class="cardtampung">
                         <div class="cardjamaah">
                             <div>
@@ -172,141 +179,65 @@
                             </div>
                         </div>
                     </div>
+                    <div class="btntambah">
+                        <a href="tambahkeberangkatan.php">Tambah Pesanan</a>
+                    </div>
                 </div>
             </div>
             <!-- ================ Tabel Jamaah ================= -->
             <div class="details">
                 <div class="recentOrders">
                     <div class="col-xs-8 col-xs-offset-2 well">
-                    <table class="table table-scroll table-striped">
-                        <thead>
-                            <tr>
-                                <td>Paket Populer</td>
-                                <td>Harga</td>
-                                <td>Kategori</td>
-                                <td>Detail</td>
-                            </tr>
-                        </thead>
+                        <table class="table table-scroll table-striped" border="1">
+                            <thead>
+                                <tr>
+                                    <td>Nama Paket</td>
+                                    <td>Tanggal Berangkat</td>
+                                    <td>Status Perjalanan</td>
+                                    <td>harga</td>
+                                    <td>aksi</td>
+                                </tr>
+                            </thead>
 
 
-                        <tbody>
-                            <tr>
-                                <td>Paket Haji 44 Hari</td>
-                                <td>$1200</td>
-                                <td>Haji</td>
-                                <td>
-                                    <span class="btndetail">
-                                        <a href="#">Detail</a>
-                                    </span>
-                                </td>
-                            </tr>
+                            <tbody>
+                                <?php $ambil = $koneksi->query("SELECT 
+                                                                keberangkatan.id_keberangkatan AS id_keberangkatan,
+                                                                master_paket.nama_paket,
+                                                                keberangkatan.tgl_keberangkatan AS tgl_keberangkatan,
+                                                                keberangkatan.status,
+                                                                master_paket.harga
+                                                            FROM
+                                                                keberangkatan
+                                                            JOIN pemesanan ON keberangkatan.id_pemesanan = pemesanan.id_pemesanan
+                                                            JOIN master_paket ON keberangkatan.id_paket = master_paket.id_paket"); 
+                                ?>
+                                            <?php while ($perproduk = $ambil->fetch_assoc()) { ?>
+                                
+                                            <td>
+                                                    <p><?php echo $perproduk['nama_paket']; ?></p>
+                                            </td>
+                                            <td>
+                                                    <p><?php echo $perproduk['tgl_keberangkatan']; ?></p>
+                                            </td>
+                                            <td>
+                                                    <p><?php echo $perproduk['status']; ?></p>
+                                            </td>
+                                            <td>
+                                                    <p><?php echo $perproduk['harga']; ?></p>
+                                            </td>
+                                            
+                                            <td>
+                                                <a href="ubahkeberangkatan.php?id=<?php echo $perproduk['id_keberangkatan']; ?>" class="btn" style="background-color: #FF6E1E; color: #fff;"> <i class="fas fa-shopping-cart"></i> Edit</a>
+                                           
+                                                <a href="hapuskeberangkatan.php?id=<?php echo $perproduk['id_keberangkatan']; ?>" class="btn btn-success"><i class="fas fa-info-circle"></i> Hapus</a>
+                                            </td>
+                                    
 
-                            <tr>
-                                <td>Paket Umroh 9 Hari</td>
-                                <td>$110</td>
-                                <td>Umrah</td>
-                                <td><span class="status pending">Pending</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Paket Haji 30 Hari</td>
-                                <td>$1200</td>
-                                <td>Haji</td>
-                                <td><span class="status return">Return</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Paket Umroh 12 Hari</td>
-                                <td>$620</td>
-                                <td>Umrah</td>
-                                <td><span class="status inProgress">In Progress</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Paket Haji 44 Hari</td>
-                                <td>$1200</td>
-                                <td>Haji</td>
-                                <td><span class="status delivered">Delivered</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Paket Umroh 9 Hari</td>
-                                <td>$110</td>
-                                <td>Umrah</td>
-                                <td><span class="status pending">Pending</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Paket Haji 30 Hari</td>
-                                <td>$1200</td>
-                                <td>Haji</td>
-                                <td><span class="status return">Return</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Paket Umroh 12 Hari</td>
-                                <td>$620</td>
-                                <td>Umrah</td>
-                                <td><span class="status inProgress">In Progress</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Paket Haji 44 Hari</td>
-                                <td>$1200</td>
-                                <td>Haji</td>
-                                <td><span class="status delivered">Delivered</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Paket Umroh 9 Hari</td>
-                                <td>$110</td>
-                                <td>Umrah</td>
-                                <td><span class="status pending">Pending</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Paket Haji 30 Hari</td>
-                                <td>$1200</td>
-                                <td>Haji</td>
-                                <td><span class="status return">Return</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Paket Umroh 12 Hari</td>
-                                <td>$620</td>
-                                <td>Umrah</td>
-                                <td><span class="status inProgress">In Progress</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Paket Haji 44 Hari</td>
-                                <td>$1200</td>
-                                <td>Haji</td>
-                                <td><span class="status delivered">Delivered</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Paket Umroh 9 Hari</td>
-                                <td>$110</td>
-                                <td>Umrah</td>
-                                <td><span class="status pending">Pending</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Paket Haji 30 Hari</td>
-                                <td>$1200</td>
-                                <td>Haji</td>
-                                <td><span class="status return">Return</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Paket Umroh 12 Hari</td>
-                                <td>$620</td>
-                                <td>Umrah</td>
-                                <td><span class="status inProgress">In Progress</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                </tr>
+                            <?php } ?>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

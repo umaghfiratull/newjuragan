@@ -190,7 +190,7 @@ if (!isset($_SESSION['admin'])) {
                                             <h4><?php echo $perproduk['email']; ?></h4>
                                         </td>
                                         <td>
-                                            <h4><?php echo $perproduk['password']; ?></h4>
+                                            <h4><?php echo $perproduk['pass_agen']; ?></h4>
                                         </td>
                                         <td>
                                             <h4><?php echo $perproduk['reward']; ?></h4>
