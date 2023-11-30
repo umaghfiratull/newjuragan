@@ -16,9 +16,6 @@
   --black1: #222;
   --black2: #999;
   --reddish: #9A3B3B;
-  --lightred: #D9656C;
-  --green: #7CE7A4;
-  --blue: #83B3DF;
 }
 
 body {
@@ -252,25 +249,25 @@ body {
 }
 
 .kontainer .cardBox {
-  margin-top: -40px;
+  margin-top: -10px;
   align-items: center;
   position: relative;
-  /* height: 200px; */
-  /* background: var(--red); */
+  height: 200px;
+  background: var(--red);
   border-radius: 20px;
   padding: 20px;
   display: grid;
   /* grid-template-columns: repeat(3, 1fr);
   grid-gap: 30px; */
-  /* grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 20px;
-  padding: 20px; */
+  padding: 20px;
   /* justify-content: space-between; */
   /* cursor: pointer; */
-  /* box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08); */
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
 }
 
-.searchpemesanan {
+.searchagen {
   grid-column: span 2;
   position: relative;
   /* width: 640px; */
@@ -278,13 +275,13 @@ body {
   /* margin: 0 10px; */
 }
 
-.searchpesanan label {
+.searchagen label {
   position: relative;
-  width: 100%;
+  width: 20%;
 }
 
-.searchpesanan label input {
-  width: 300px;
+.searchagen label input {
+  width: 20%;
   height: 35px;
   border-radius: 40px;
   padding: 5px 20px;
@@ -294,85 +291,82 @@ body {
   border: 1px solid var(--black2);
 }
 
-.searchpesanan label ion-icon {
+.searchagen label ion-icon {
   position: absolute;
   top: 0;
   left: 10px;
   font-size: 1.2rem;
 }
 
-.btntambah {
+.cardBox .cardtampung {
   position: relative;
-  width: 150px;
-  height: 30px;
-  padding: 7px 4px;
-  background: var(--blue);
-  border-radius: 4px;
-  font-size: 14px;
-  font-weight: 600;
+  height: 100px;
+  background: var(--red);
+  /* padding: 0 50px; */
+  border-radius: 20px;
+  /* display: flex; */
+  justify-content: space-between;
   text-align: center;
-  margin-left: 50%;
-  margin-top: -4.5%;
   align-items: center;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  display: grid;
+  grid-column: span 2;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
 }
 
-.btntambah a{
-  margin-top: 4px;
-  text-decoration: none;
+.cardBox .cardjamaah {
   color: var(--red);
-}
-
-.btnedit {
+  font-weight: 600;
   position: relative;
-  width: 80px;
-  /* height: 30px; */
-  padding: 7px 4px;
-  background: var(--green);
-  border-radius: 4px;
-  font-size: 14px;
-  font-weight: 600;
+  height: 80px;
+  background: var(--white);
+  /* padding: 0 50px; */
+  border-radius: 20px;
+  /* display: flex; */
   text-align: center;
-  margin-left: 68%;
-  margin-top: -4.5%;
   align-items: center;
+  cursor: pointer;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
 }
 
-.btnedit a{
-  margin-top: 4px;
-  text-decoration: none;
+.cardBox .numbers{
   color: var(--red);
+  text-align: center;
+  font-size: 30px;
 }
 
-.btnedit ion-icon {
-  position: absolute;
-  /* top: 0; */
-  left: 10px;
-  /* font-size: 1.2rem; */
- color: var(--red);
-}
-
-.btnhapus {
+.cardBox .btntanggal{
   position: relative;
-  width: 80px;
-   /* height: 30px; */
-  padding: 7px 4px;
-  background: var(--lightred);
-  border-radius: 4px;
-  font-size: 14px;
-  font-weight: 600;
-  text-align: center;
-  margin-left: 79%;
-  margin-top: -4.5%;
+  height: 35px;
   align-items: center;
+  text-align: center;
+  background-color: var(--red);
+  border-radius: 20px;
+  border: 3px solid var(--white);
 }
 
-.btnhapus a{
-  margin-top: 4px;
+.cardBox .btntanggal ion-icon{
+  font-size: 1.5rem;
+  color: var(--white);
+}
+.cardBox .btntanggal a{
+  margin-bottom: 10px;
+  position: relative;
+  color: var(--white);
+  align-items: center;
+  text-align: center;
   text-decoration: none;
-  color: var(--red);
 }
 
-
+/* .cardBox .card:hover {
+  background: var(--red);
+}
+.cardBox .card:hover .numbers,
+.cardBox .card:hover .cardName,
+.cardBox .card:hover .iconBx {
+  color: var(--white);
+} */
 
 /* ================== Order Details List ============== */
 .well {
@@ -401,7 +395,7 @@ body {
   border: none;
 }
 .details {
-  margin-top: -60px;
+  margin-top: -20px;
   position: relative;
   width: 100%;
   display: grid;
@@ -424,10 +418,6 @@ body {
 .details table {
   width: 100%;
   border-collapse: collapse;
-}
-
-.details warp {
-  text-wrap: warp;
 }
 .details table thead td {
   background: var(--red);

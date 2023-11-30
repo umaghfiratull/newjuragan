@@ -209,36 +209,34 @@ if (!isset($_SESSION['admin'])) {
                 <div class="recentOrders">
                     <div class="col-xs-8 col-xs-offset-2 well">
                     <table class="table table-scroll table-striped" border="1">
-                        <thead>
-                            <tr>
-                                <td>NIK</td>
-                                <td>Nama Lengkap</td>
-                                <td>Alamat</td>
-                                <td>Nomor Telpon</td>
-                                <td>Tanggal Lahir</td>
-                                <td>Jenis Kelamin</td>
-                                <td>Nama Orang Tua</td>
-                                <td>Aksi</td>
-                            </tr>
-                        </thead>
-
-
-                        <tbody>
-                            <?php $ambil = $koneksi->query("SELECT * FROM jamaah"); ?>
+                    <thead>
+                                <tr>
+                                    <td>NIK</td>
+                                    <td>Nama Lengkap</td>
+                                    <td>Alamat</td>
+                                    <td>Nomor Telpon</td>
+                                    <td>Tanggal Lahir</td>
+                                    <td>Jenis Kelamin</td>
+                                    <td>Nama Orang Tua</td>
+                                    <td>Aksi</td>
+                                </tr>
+                            </thead>
+                        <tbody><tr>
+                        <?php $ambil = $koneksi->query("SELECT * FROM jamaah"); ?>
                         <?php while ($perproduk = $ambil->fetch_assoc()) { ?>
-                            
-                                        <td>
-                                                <p><?php echo $perproduk['NIK']; ?></p>
+                                                               
+                                       <td> 
+                                            <h4><?php echo $perproduk['NIK']; ?></h4>
                                         </td>
                                         <td>
-                                                <p><?php echo $perproduk['nama_lengkap']; ?></p>
+                                            <h4><?php echo $perproduk['nama_lengkap']; ?></h4>
                                         </td>
                                         <td>
-                                                <p class="wrap"><?php echo $perproduk['alamat']; ?></p>
+                                            <h4><?php echo $perproduk['alamat']; ?></h4>
                                         </td>
                                         <td>
-                                                <p><?php echo $perproduk['no_telepon']; ?></p>
-                                        </td>
+                                            <h4><?php echo $perproduk['no_telepon']; ?></h4>
+                                            </td>
                                         <td>
                                                 <p><?php echo $perproduk['tgl_lahir']; ?></p>
                                         </td>
@@ -253,9 +251,6 @@ if (!isset($_SESSION['admin'])) {
                                        
                                             <a href="hapusjamaah.php?id=<?php echo $perproduk['NIK']; ?>" class="btn btn-success"><i class="fas fa-info-circle"></i> Hapus</a>
                                         </td>
-                                
-
-
                             </div>
                             </tr>
                         <?php } ?>

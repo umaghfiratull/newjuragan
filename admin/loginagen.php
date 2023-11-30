@@ -53,7 +53,7 @@ include '../admin/koneksi.php';
                     </form>
 
                     <div class="form-link">
-                        <span>Bukan Admin? <a href="loginagen.php">Login Agen</a></span>
+                        <span>Bukan Agen? <a href="login.php">Login Admin</a></span>
                     </div>
 
                     <div class="form-link">
@@ -82,13 +82,13 @@ include '../admin/koneksi.php';
 
         <?php
             if (isset($_POST['login'])) {
-              $ambil = $koneksi->query("SELECT * FROM admin WHERE email='$_POST[email]' AND password ='$_POST[pass]'");
+              $ambil = $koneksi->query("SELECT * FROM agen WHERE email='$_POST[email]' AND password ='$_POST[pass]'");
               $yangcocok = $ambil->num_rows;
               if ($yangcocok == 1) {
                 $_SESSION['admin'] = $ambil->fetch_assoc();
                 echo "<div class='alert alert-info'>Login Sukses</div>";
                 echo "<script>alert('Login Sukses');</script>";
-                echo "<meta http-equiv='refresh' content='1;url=dbadmin.php'>";
+                echo "<meta http-equiv='refresh' content='1;url=dbagen.php'>";
               } else {
                 echo "<div class='alert alert-danger'>Login Gagal</div>";
                 echo "<script>alert('Login Gagal, cek kembali email dan password. Pastikan semua terisi');</script>";

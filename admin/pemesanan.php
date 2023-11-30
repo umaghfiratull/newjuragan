@@ -1,7 +1,7 @@
 <?php
 session_start();
 // Skrip Koneksi
-include '../admin/koneksi.php';
+include 'koneksi.php';
 ?>
 
 <!DOCTYPE html>
@@ -157,7 +157,7 @@ include '../admin/koneksi.php';
                     </div>
 
                     <div class="btntambah">
-                        <a href="#">Tambah Pesanan</a>
+                        <a href="tambahpemesanan.php">Tambah Pesanan</a>
                     </div>
 
                     <div class="btnedit">
@@ -212,34 +212,62 @@ include '../admin/koneksi.php';
                     <thead>
                                 <tr>
                                     <td>No</td>
-                                    <td>Nama</td>
-                                    <td>tanggal</td>
+                                    <td>Nama Jamaah</td>
+                                    <td>Paket</td>
+                                    <td>Jenis Pembayaran</td>
+                                    <td>Tanggal</td>
                                     <td>status</td>
-                                    <td>harga</td>
+                                    <td>Dp</td>
+                                    <td>Sisa</td>
                                     <td>aksi</td>
                                 </tr>
                             </thead>
                         <tbody>
                         <?php $nomor = 1; ?>
-                            <?php $ambil = $koneksi->query("SELECT 
-                                                                keberangkatan.id AS id_keberangkatan,
+                            <?php $ambil = $koneksi->query("SELECT
+                                                                pemesanan.id_pemesanan,
+                                                                jamaah.nama_lengkap,
                                                                 master_paket.nama_paket,
-                                                                keberangkatan.tanggal AS tanggal_keberangkatan,
-                                                                keberangkatan.status,
-                                                                master_paket.harga
+                                                                pemesanan.jenis_pembayaran,
+                                                                pemesanan.tgl_pemesanan,
+                                                                detail_pemesanan.status_pemesanan,
+                                                                pemesanan.Dp,
+                                                                pemesanan.sisa
+                                                                
                                                             FROM
-                                                                keberangkatan
-                                                            JOIN pemesanan ON keberangkatan.id_pamesanan = pemesanan.id_pemesanan
-                                                            JOIN master_paket ON pemesanan.id_paket = master_paket.id_paket"); ?>
+                                                                pemesanan
+                                                            LEFT JOIN
+                                                                jamaah ON pemesanan.NIK = jamaah.NIK
+                                                            LEFT JOIN
+                                                                detail_pemesanan ON pemesanan.id_pemesanan = detail_pemesanan.id_pemesanan
+                                                            LEFT JOIN
+                                                                master_paket ON pemesanan.id_paket = master_paket.id_paket"); ?>
                             <?php while ($pecah = $ambil->fetch_assoc()) { ?>
                                 <tr>
-                                    <td><?php echo $nomor; ?></td>
-                                    <td><?php echo $pecah['nama_paket']; ?></td>
-                                    <td><?php echo $pecah['tanggal_keberangkatan']; ?></td>
-                                    <td><?php echo $pecah['status']; ?></td>
-                                    <td>Rp. <?php echo number_format($pecah['harga']); ?></td>
                                     <td>
-                                        <a href="deleteaksi.php?id=$d[id]\" onclik="return confirm ('Apakahh anda yakin ingin menghapus data $d[nama]?')">Hapus</a>
+                                        <?php echo $nomor; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $pecah['nama_lengkap']; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $pecah['nama_paket']; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $pecah['jenis_pembayaran']; ?>
+                                    </td>
+                                    <td> 
+                                        <?php echo $pecah['tgl_pemesanan']; ?>
+                                    </td>
+                                    <td><?php echo $pecah['status_pemesanan']; ?></td>
+                                    <td>
+                                        Rp. <?php echo number_format($pecah['Dp']); ?>
+                                    </td>
+                                    <td>
+                                        Rp. <?php echo number_format($pecah['sisa']); ?>
+                                    </td>
+                                    <td>
+                                        <a href="deleteaksi.php?id=$d[id_pemesanan]\" onclik="return confirm ('Apakahh anda yakin ingin menghapus data $d[nama_lengkap]?')">Hapus</a>
                                     </td>
                                 </tr>
                                 <?php $nomor++; ?>

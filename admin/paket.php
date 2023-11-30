@@ -13,7 +13,7 @@ include '../admin/koneksi.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paket Perjalanan</title>
     <!-- ======= Styles ====== -->
-    <link rel="stylesheet" href="assets/css/pemesanans.css">
+    <link rel="stylesheet" href="assets/css/pakets.css">
     
 </head>
 
@@ -227,16 +227,16 @@ include '../admin/koneksi.php';
                                     <td><img src="assets/foto/<?php echo $perproduk['foto_produk']; ?>" alt="" class="img-fluid" style="max-width: 150px; max-height: 150px;"></td>
                                    
                                        <td> 
-                                            <h4 class="wrap" contenteditable="false"><?php echo $perproduk['nama_paket']; ?></h4>
+                                            <h4><?php echo $perproduk['nama_paket']; ?></h4>
                                         </td>
                                         <td>
-                                            <h4 style="color:grey;">stok: <?php echo $perproduk['lama_waktu']; ?></h4>
+                                            <h4>stok: <?php echo $perproduk['lama_waktu']; ?></h4>
                                         </td>
                                         <td>
                                             <h4>Rp. <?php echo number_format($perproduk['harga']); ?></h4>
                                         </td>
                                         <td>
-                                            <h4 class="wrap" contenteditable="false"><?php echo $perproduk['deskripsi_produk']; ?></h4>
+                                            <h4><?php echo $perproduk['deskripsi_produk']; ?></h4>
                                         </td>
                                         <td>
                                         <a href="ubahpaket.php?id=<?php echo $perproduk['id_paket']; ?>" class="btn" style="background-color: #FF6E1E; color: #fff;"> <i class="fas fa-shopping-cart"></i> Edit</a>

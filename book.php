@@ -24,7 +24,7 @@
             <a href="about.php">about</a>
             <a href="package.php">package</a>
             <a href="book.php">book</a>
-            <a href="admin/login.php"> <i class="fas fa-lock"></i>login</a>
+            <a href="admin/login.php"></i>login</a>
        </nav>
 
        <div id="menu-btn" class="fas fa-bars">

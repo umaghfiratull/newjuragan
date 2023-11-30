@@ -232,22 +232,23 @@ if (!isset($_SESSION['admin'])) {
                     <table>
                         <?php $nomor = 1; ?>
                             <?php $ambil = $koneksi->query("SELECT 
-                                                            mp.nama_paket AS Nama_Paket, 
-                                                            k.tanggal AS Tanggal_Keberangkatan, 
-                                                            COUNT(p.id_pemesanan) AS Jumlah_Jamaah
-                                                            FROM 
-                                                            keberangkatan k
-                                                            JOIN 
-                                                            pemesanan p ON k.id_pemesanan = p.id_pemesanan
-                                                            JOIN 
-                                                            master_paket mp ON p.id_paket = mp.id_paket
-                                                            WHERE 
-                                                            k.tanggal >= CURDATE()
-                                                            GROUP BY 
-                                                            mp.nama_paket, k.tanggal
-                                                            ORDER BY 
-                                                            k.tanggal
-                                                            LIMIT 3;"); ?>
+    mp.nama_paket AS Nama_Paket, 
+    k.tgl_keberangkatan AS Tanggal_Keberangkatan, 
+    COUNT(p.id_pemesanan) AS Jumlah_Jamaah
+FROM 
+    keberangkatan k
+LEFT JOIN 
+    pemesanan p ON k.id_pemesanan = p.id_pemesanan
+LEFT JOIN 
+    master_paket mp ON k.id_paket = mp.id_paket
+WHERE 
+    k.tgl_keberangkatan >= CURDATE()
+GROUP BY 
+    mp.nama_paket, k.tgl_keberangkatan
+ORDER BY 
+    k.tgl_keberangkatan
+LIMIT 3;
+;"); ?>
                             <?php while ($pecah = $ambil->fetch_assoc()) { ?>
                                 <tr>
                                     <!-- <td><?php echo $pecah['Nama_Paket']; ?></td>

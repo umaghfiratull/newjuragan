@@ -11,7 +11,7 @@ include '../admin/koneksi.php';
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title> Login Register Juragan </title>
+        <title> Register Juragan </title>
 
         <!-- CSS -->
         <link rel="stylesheet" href="assets/css/registerstyle.css">
@@ -31,7 +31,7 @@ include '../admin/koneksi.php';
                 </div>
                 <div class="form-content">
                 <div class="headerlogin">
-                    <header>Masuk Sebagai Admin</header>
+                    <header>Register Agen</header>
                     </div>
                     <form method="POST">
                         <div class="field input-field">
@@ -42,9 +42,9 @@ include '../admin/koneksi.php';
                             <input type="email" name="email" placeholder="Email" class="input">
                         </div>
 
-                        <div class="field input-field">
+                        <!-- <div class="field input-field">
                             <input type="text" name="no_telepon" placeholder="Nomor Telepon /  WA" class="input">
-                        </div>
+                        </div> -->
 
                         <div class="field input-field">
                             <input type="password" name="password" placeholder="Password" class="password">
@@ -91,10 +91,10 @@ if (isset($_POST["daftar"])) {
     $password = $_POST["password"];
     $kpassword = $_POST["kpassword"];
     // $alamat = $_POST["alamat"];
-    $telepon = $_POST["no_telepon"];
+    // $telepon = $_POST["no_telepon"];
 
     // Validasi data input
-    if (empty($nama) || empty($email) || empty($password) || empty($kpassword) || empty($telepon)) {
+    if (empty($nama) || empty($email) || empty($password) || empty($kpassword)) {
         echo "<script>alert('Semua field harus diisi');</script>";
     } else {
         // Check if passwords match
@@ -112,8 +112,8 @@ if (isset($_POST["daftar"])) {
                 echo "<script>alert('Pendaftaran gagal, email sudah digunakan');</script>";
             } else {
                 // Insert data pelanggan
-                $stmt = $koneksi->prepare("INSERT INTO admin(email, password, nama, no_telepon) VALUES (?, ?, ?, ?)");
-                $stmt->bind_param("ssss", $email, $password, $nama, $telepon);
+                $stmt = $koneksi->prepare("INSERT INTO agen(nama, email, password) VALUES (?, ?, ?)");
+                $stmt->bind_param("sss", $nama, $email, $password);
                 $stmt->execute();
                 $stmt->close();
 
