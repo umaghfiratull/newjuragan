@@ -1,7 +1,7 @@
-<h2>Ubah Produk</h2>
+<h2>Ubah Barang</h2>
 <?php
 include 'koneksi.php';
-$ambil=$koneksi->query("SELECT * FROM master_paket WHERE id_paket='$_GET[id]'");
+$ambil=$koneksi->query("SELECT * FROM barang WHERE id_barang='$_GET[id]'");
 $pecah=$ambil->fetch_assoc();
 
 // echo "<pre>";
@@ -24,45 +24,28 @@ $pecah=$ambil->fetch_assoc();
 </head>
 <form method="post" enctype="multipart/form-data">
 	<div class="form-group">
-		  <label>Nama Paket</label>
-		  <input type="text" name="nama" class="form-control" value="<?php echo $pecah['nama_paket'];?>">
+		  <label>Nama Barang</label>
+		  <input type="text" name="nama" class="form-control" value="<?php echo $pecah['nama_barang'];?>">
 	</div>
 
 	<div class="form-group">
-		  <label>Pilihan Paket</label>
-		  <input type="text" name="paket" class="form-control" value="<?php echo $pecah['pilihan_paket'];?>">
+		  <label>Stok Barang</label>
+		  <input type="number" name="paket" class="form-control" value="<?php echo $pecah['stok_barang'];?>">
 	</div>
 
 	<div class="form-group">
 		  <label>Harga (Rp)</label>
-		  <input type="number" class="form-control" name="harga" value="<?php echo $pecah['harga'];?>">
-	</div>
-
+		  <input type="number" class="form-control" name="harga" value="<?php echo $pecah['harga_barang'];?>">
 	<div class="form-group">
-		  <label>Lama Keberangkatan</label>
-		  <input type="number" class="form-control" name="lama" value="<?php echo $pecah['lama_waktu'];?>">
-	</div>
-
-	<div class="form-group">
-		  <label>seat</label>
-		  <input type="number" class="form-control" name="sit" value="<?php echo $pecah['seat'];?>">
-	</div>
-
-	<div class="form-group">
-		<img src="assets/foto/<?php echo $pecah['foto_produk']?>" width="200">
+		<img src="assets/barang/<?php echo $pecah['foto_barang']?>" width="200">
 	</div>
 
 	<div class="form-group">
 		<label>Ganti Foto</label>
 		<input type="file" name="foto" class="form-control">
 	</div>
-
-	<div class="form-group">
-		<label>Deskripsi</label>
-		<textarea name="deskripsi" class="form-control" rows="10"><?php echo $pecah['deskripsi_produk']; ?></textarea>
-	</div>
 	<button class="btn btn-primary" name="ubah"><i class="bi bi-floppy"></i> Simpan</button>
-	<button ><a href="paket.php" class="btn_cancel">cancel</a></button>
+	<button ><a href="daftarbarang.php" class="btn_cancel">cancel</a></button>
 </form>
 
 <?php
@@ -75,32 +58,26 @@ $pecah=$ambil->fetch_assoc();
 
 			if (!empty($lokasifoto))
 			{
-				move_uploaded_file($lokasifoto, "assets/foto/$namafoto");
+				move_uploaded_file($lokasifoto, "assets/barang/$namafoto");
 
-				$koneksi->query("UPDATE master_paket 
-									SET nama_paket='$_POST[nama]',
-										pilihan_paket='$_POST[paket]',
-										harga='$_POST[harga]',
-										lama_waktu='$_POST[lama]',
-										seat='$_POST[sit]',
-										foto_produk='$namafoto',
-										deskripsi_produk='$_POST[deskripsi]' 
-									WHERE id_paket='$_GET[id]'");	
+				$koneksi->query("UPDATE barang 
+									SET nama_barang='$_POST[nama]',
+										stok_barang='$_POST[paket]',
+										harga_barang='$_POST[harga]',
+										foto_barang='$namafoto'
+									WHERE id_barang='$_GET[id]'");	
 			}
 
 			else
 			{
-			    $koneksi->query("UPDATE master_paket 
-			                        SET nama_paket='$_POST[nama]',
-			                            pilihan_paket='$_POST[paket]',
-			                            harga='$_POST[harga]',
-			                            lama_waktu='$_POST[lama]',
-			                            seat='$_POST[sit]',
-			                            foto_produk='$pecah[foto_produk]',
-			                            deskripsi_produk='$_POST[deskripsi]' 
-			                        WHERE id_paket='$_GET[id]'");
+			    $koneksi->query("UPDATE barang 
+									SET nama_barang='$_POST[nama]',
+										stok_barang='$_POST[paket]',
+										harga_barang='$_POST[harga]',
+										foto_barang='$namafoto'
+									WHERE id_barang='$_GET[id]'");	
 			}
-				echo "<script>alert('Data produk telah diubah');</script>";
-				echo "<script>location='paket.php';</script>";
+				echo "<script>alert('Data barang telah diubah');</script>";
+				echo "<script>location='daftarbarang.php';</script>";
 
 		}?>

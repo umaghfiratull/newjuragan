@@ -1,14 +1,14 @@
 <?php
 include '../admin/koneksi.php';
-	$ambil = $koneksi->query("SELECT * FROM master_paket WHERE id_paket='$_GET[id]'");
+	$ambil = $koneksi->query("SELECT * FROM barang WHERE id_barang='$_GET[id]'");
 	$pecah = $ambil->fetch_assoc();
-	$fotoproduk = $pecah['foto_produk'];
-		if (file_exists("assets/foto_/$fotoproduk"))
+	$fotoproduk = $pecah['foto_barang'];
+		if (file_exists("assets/barang/$fotoproduk"))
 		{
-			unlink("assets/foto/$fotoproduk");
+			unlink("assets/barang/$fotoproduk");
 		}
 
-		$koneksi->query("DELETE FROM master_paket WHERE id_paket='$_GET[id]'");
-		echo "<script>alert('Paket terhapus');</script>";
-		echo "<script>location='paket.php';</script>";
+		$koneksi->query("DELETE FROM barang WHERE id_barang='$_GET[id]'");
+		echo "<script>alert('Barang terhapus');</script>";
+		echo "<script>location='daftarbarang.php';</script>";
 ?>

@@ -11,7 +11,7 @@ include '../admin/koneksi.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paket Perjalanan</title>
+    <title>Daftar Barang</title>
     <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="assets/css/pakets.css">
     
@@ -62,7 +62,7 @@ include '../admin/koneksi.php';
                         <span class="icon">
                             <ion-icon name="book-outline"></ion-icon>
                         </span>
-                        <span class="title">mutawwif</span>
+                        <span class="title">Mutawwif</span>
                     </a>
                 </li>
 
@@ -147,7 +147,7 @@ include '../admin/koneksi.php';
 
             <!-- ======================= Cards ================== -->
             <div class="kontainer">
-                <h2>Paket Perjalanan</h2>
+                <h2>Daftar Barang</h2>
                 <div class="cardBox">
                     <div class="searchpesanan">
                         <label>
@@ -157,7 +157,7 @@ include '../admin/koneksi.php';
                     </div>
 
                     <div class="btntambah">
-                        <a href="tambahpaket.php">Tambah Pesanan</a>
+                        <a href="tambahbarang.php">Tambah Barang</a>
                     </div>
 
                     <!-- <div class="btnedit">
@@ -223,7 +223,7 @@ include '../admin/koneksi.php';
                         <?php while ($perproduk = $ambil->fetch_assoc()) { ?>
                             
                             
-                                    <td><img src="assets/foto/<?php echo $perproduk['foto_barang']; ?>" alt="" class="img-fluid" style="max-width: 150px; max-height: 150px;"></td>
+                                    <td><img src="assets/barang/<?php echo $perproduk['foto_barang']; ?>" alt="" class="img-fluid" style="max-width: 150px; max-height: 150px;"></td>
                                    
                                        <td> 
                                             <h4><?php echo $perproduk['nama_barang']; ?></h4>
@@ -235,9 +235,9 @@ include '../admin/koneksi.php';
                                             <h4>Rp. <?php echo number_format($perproduk['harga_barang']); ?></h4>
                                         </td>
                                         <td>
-                                        <a href="ubahpaket.php?id=<?php echo $perproduk['id_barang']; ?>" class="btn" style="background-color: #FF6E1E; color: #fff;"> <i class="fas fa-shopping-cart"></i> Edit</a>
+                                        <a href="ubahbarang.php?id=<?php echo $perproduk['id_barang']; ?>" class="btn" style="background-color: #FF6E1E; color: #fff;"> <i class="fas fa-shopping-cart"></i> Edit</a>
                                        
-                                            <a href="hapuspaket.php?id=<?php echo $perproduk['id_barang']; ?>" class="btn btn-success"><i class="fas fa-info-circle"></i> Hapus</a>
+                                            <a href="hapusbarang.php?id=<?php echo $perproduk['id_barang']; ?>" class="btn btn-success"><i class="fas fa-info-circle"></i> Hapus</a>
                                         </td>
                                 
 

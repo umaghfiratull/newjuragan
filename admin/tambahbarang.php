@@ -14,7 +14,7 @@ if (!isset($_SESSION["admin"])) {
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TAMBAH PAKET KEBERANGKATAN</title>
+    <title>TAMBAH BARANG</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
 
@@ -30,56 +30,38 @@ if (!isset($_SESSION["admin"])) {
 <body>
 <!-- Bagian HTML lainnya -->
 
-<h2>Tambah Paket Keberangkatan</h2>
+<h2>Tambah Barang</h2>
 
 <form method="post" enctype="multipart/form-data">
     <div class="form-group">
-        <label>Nama Paket</label>
+        <label>Nama Barang</label>
         <input type="text" class="form-control" name="nama">
     </div>
-
-    <div class="form-group">
-        <label>Pilih Paket</label>
-        <input type="text" class="form-control" name="paket">
-    </div>
-
     <div class="form-group">
         <label>Harga (Rp)</label>
         <input type="number" class="form-control" name="harga">
     </div>
-
     <div class="form-group">
-        <label>Lama Keberangkatan</label>
-        <input type="number" class="form-control" name="lama">
-    </div>
-
-    <div class="form-group">
-        <label>seat</label>
+        <label>Stok</label>
         <input type="number" class="form-control" name="sit">
     </div>
 
     <div class="form-group">
-        <label>Foto Produk</label>
+        <label>Foto Barang</label>
         <input type="file" class="form-control" name="foto">
     </div>
-
-    <div class="form-group">
-        <label>Deskripsi Produk</label>
-        <textarea class="form-control" name="deskripsi" rows="10"></textarea>
-        
-    </div>
     <button class="btn btn-primary" name="save">Simpan</button>
-    <button ><a href="paket.php" class="btn_cancel">cancel</a></button>
+    <button ><a href="daftarbarang.php" class="btn_cancel">cancel</a></button>
 </form>
 
 <?php
 if (isset($_POST['save'])) {
     $nama = $_FILES['foto']['name'];
     $lokasi = $_FILES['foto']['tmp_name'];
-    move_uploaded_file($lokasi, "assets/foto/" . $nama);
+    move_uploaded_file($lokasi, "assets/barang/" . $nama);
 
     // Prepare the SQL statement
-    $stmt = $koneksi->prepare("INSERT INTO master_paket (nama_paket, pilihan_paket, harga, lama_waktu, seat, foto_produk, deskripsi_produk) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $stmt = $koneksi->prepare("INSERT INTO barang (nama_barang, stok_barang, harga_barang, foto_barang) VALUES (?, ?, ?, ?)");
 
     // Check if the prepare statement was successful
     if (!$stmt) {
@@ -87,7 +69,7 @@ if (isset($_POST['save'])) {
     }
 
     // Bind the parameters
-    $success = $stmt->bind_param("ssiiiss", $_POST['nama'], $_POST['paket'], $_POST['harga'], $_POST['lama'], $_POST['sit'], $nama, $_POST['deskripsi']);
+    $success = $stmt->bind_param("siis", $_POST['nama'], $_POST['sit'], $_POST['harga'], $nama);
 
     // Check if binding parameters was successful
     if (!$success) {
@@ -100,7 +82,7 @@ if (isset($_POST['save'])) {
     // Check if execution was successful
     if ($success) {
         echo "<div class='alert alert-info'>Data tersimpan</div>";
-        echo "<script>location='paket.php';</script>";
+        echo "<script>location='daftarbarang.php';</script>";
     } else {
         die("Error executing statement: " . $stmt->error);
     }

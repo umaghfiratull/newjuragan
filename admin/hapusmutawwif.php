@@ -9,6 +9,6 @@ include '../admin/koneksi.php';
 		}
 
 		$koneksi->query("DELETE FROM mutawwif WHERE id_mutawwif='$_GET[id]'");
-		echo "<script>alert('Paket terhapus');</script>";
+		echo "<script>alert('Data Mutawwif terhapus');</script>";
 		echo "<script>location='mutawwif.php';</script>";
 ?>

@@ -236,7 +236,7 @@ include 'koneksi.php';
                                         <?php echo $pecah['jenis_pembayaran']; ?>
                                     </td>
                                     <td>
-                                        <?php echo $pecah['Dp']; ?>
+                                        <?php echo $pecah['Dp_pembayaran']; ?>
                                     </td>
                                     <td> 
                                         <?php echo $pecah['sisa_pembayaran']; ?>
