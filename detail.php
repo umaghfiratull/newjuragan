@@ -27,7 +27,7 @@ $detail = $ambil->fetch_assoc();
     <thead>
         <tr>
             <th>no</th>
-            <th>nama produk</th>
+            <th>nama paket</th>
             <th>harga</th>
             <th>jumlah</th>
             <th>subtotal</th>

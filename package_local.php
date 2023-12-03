@@ -1,3 +1,8 @@
+<?php
+session_start();
+//koneksi ke database
+include'admin/koneksi.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +18,34 @@
 
     <!-- costume css file link -->
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        .konten {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .konten h1{
+            font-size: 5rem;
+        }
+
+        .thumbnail {
+            border: 1px solid #ddd;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 10px;
+            height: 100%;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .col-md-3 {
+            flex: 0 0 25%;
+            padding: 15px;
+        }
+    </style>
 </head>
 <body>
     <!-- header section start -->
@@ -35,66 +68,44 @@
     <!-- header section ends -->
 
     <div class="heading" style="background:url(images/bgatas.png) no-repeat">
-        <h1>book now</h1>
+        <h1>Package</h1>
     </div>
 
-    <!-- booking section start -->
+    <!-- packages section start -->
 
-        <div class="booking">
+    <section class="packages">
+        <h1 class="heading-title">
+            top paket pilihan
+        </h1>
+        <div class="row">
 
-            <h1 class="heading-title">book your trip!</h1>
+                <?php $ambil = $koneksi->query("SELECT * FROM master_paket"); ?>
+                <?php while ($perproduk = $ambil->fetch_assoc()) { ?>
 
-            <form action="book_form.php" method="post" class="book-form">
+                    <div class="col-md-3">
+                        <div class="thumbnail">
+                            <img src="admin/assets/foto/<?php echo $perproduk['foto_paket']; ?>" alt="" class="img-fluid" style="max-width: 250px; max-height: 250px;">
+                            <div class="caption">
+                                <h3><?php echo $perproduk['nama_paket']; ?></h3>
+                                <h5 style="color:grey;">stok: <?php echo $perproduk['lama_waktu']; ?></h5>
+                                <h5>Rp. <?php echo number_format($perproduk['harga_paket']); ?></h5>
+                                <h3>Deskripsi Produk : <?php echo $perproduk['deskripsi_paket']; ?></h3>
+                                <!-- <a href="beli.php?id=<?php echo $perproduk['id_paket']; ?>" class="btn" style="background-color: #FF6E1E; color: #fff;"> <i class="fas fa-shopping-cart"></i> Beli</a> -->
+                                <a href="detail.php?id=<?php echo $perproduk['id_paket']; ?>" class="btn btn-success"><i class="fas fa-info-circle"></i> Detail</a>
+                            </div>
+                        </div>
 
-                <div class="flex">
-                    <div class="inputBox">
-                        <span>nama :</span>
-                        <input type="text" placeholder="enter your name" name="name">
+
                     </div>
+                <?php } ?>
 
-                    <div class="inputBox">
-                        <span>email :</span>
-                        <input type="text" placeholder="enter your email" name="mail">
-                    </div>
+            </div>
 
-                    <div class="inputBox">
-                        <span>Telp / wa :</span>
-                        <input type="number" placeholder="enter your number" name="telp">
-                    </div>
-
-                    <div class="inputBox">
-                        <span>alamat :</span>
-                        <input type="text" placeholder="enter your alamat" name="alamat">
-                    </div>
-
-                    <div class="inputBox">
-                        <span>Tujuan :</span>
-                        <input type="text" placeholder="enter your tujuuan" name="tujuan">
-                    </div>
-
-                    <div class="inputBox">
-                        <span>jumlah pengunjuung:</span>
-                        <input type="number" placeholder="total pengunjung" name="pengunjung">
-                    </div>
-
-                    <div class="inputBox">
-                        <span>arrivals :</span>
-                        <input type="date" name="datang">
-                    </div>
-
-                    <div class="inputBox">
-                        <span>leaving :</span>
-                        <input type="date" name="pulang">
-                    </div>
-                </div>
-
-                <input type="submit" value="submit" class="btn" name="send">
+        <div class="load-more"><span class="btn">load more</span></div>
+    </section>
 
 
-            </form>
-        </div>
-
-    <!-- booking section end -->
+    <!-- packages section ends -->
 
 
 
@@ -121,10 +132,10 @@
 
             <div class="box">
                 <h3>ekstra link</h3>
-                <a href="#"> <i class="fas fa fa-angel-righht"></i></i>Ajukan Pertanyaan</a>
-                <a href="#"> <i class="fas fa fa-angel-righht"></i></i>Tentang Kami</a>
-                <a href="#"> <i class="fas fa fa-angel-righht"></i></i>Privacy Policy</a>
-                <a href="#"> <i class="fas fa fa-angel-righht"></i></i>Terms Of Use</a>
+                <a href="#"> <i class="fas fa fa-angel-righht"></i></i>ask questions</a>
+                <a href="#"> <i class="fas fa fa-angel-righht"></i></i>about us</a>
+                <a href="#"> <i class="fas fa fa-angel-righht"></i></i>privacy policy</a>
+                <a href="#"> <i class="fas fa fa-angel-righht"></i></i>terms of use</a>
             </div>
 
             <div class="box">

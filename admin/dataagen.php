@@ -184,10 +184,10 @@ if (!isset($_SESSION['admin'])) {
                         <?php while ($perproduk = $ambil->fetch_assoc()) { ?>
                                                                
                                        <td> 
-                                            <h4><?php echo $perproduk['nama']; ?></h4>
+                                            <h4><?php echo $perproduk['nama_agen']; ?></h4>
                                         </td>
                                         <td>
-                                            <h4><?php echo $perproduk['email']; ?></h4>
+                                            <h4><?php echo $perproduk['email_agen']; ?></h4>
                                         </td>
                                         <td>
                                             <h4><?php echo $perproduk['pass_agen']; ?></h4>
@@ -196,9 +196,9 @@ if (!isset($_SESSION['admin'])) {
                                             <h4><?php echo $perproduk['reward']; ?></h4>
                                             </td>
                                         <td>
-                                            <a href="ubahagen.php?id=<?php echo $perproduk['nama']; ?>" class="btn" style="background-color: #FF6E1E; color: #fff;"> <i class="fas fa-shopping-cart"></i> Edit</a>
+                                            <a href="ubahagen.php?id=<?php echo $perproduk['nama_agen']; ?>" class="btn" style="background-color: #FF6E1E; color: #fff;"> <i class="fas fa-shopping-cart"></i> Edit</a>
                                        
-                                            <a href="hapusagen.php?id=<?php echo $perproduk['nama']; ?>" class="btn btn-success"><i class="fas fa-info-circle"></i> Hapus</a>
+                                            <a href="hapusagen.php?id=<?php echo $perproduk['nama_agen']; ?>" class="btn btn-success"><i class="fas fa-info-circle"></i> Hapus</a>
                                         </td>
                             </div>
                             </tr>

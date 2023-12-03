@@ -49,7 +49,7 @@ if (!isset($_SESSION["admin"])) {
         ?>
     </div>
 
-    <div class="form-group">
+    <!-- <div class="form-group">
         <label>ID Paket</label>
         <?php
             echo "<select name=paket>
@@ -63,7 +63,7 @@ if (!isset($_SESSION["admin"])) {
                     }
             echo "</select>"
         ?>
-    </div>
+    </div> -->
 	
 	<div class="form-group">
         <label>Tanggal Pemesaanan</label>
@@ -114,16 +114,16 @@ if (!isset($_SESSION["admin"])) {
     </div>
 	
 	<div class="form-group">
-        <label>Agen Keberangkatan</label>
+        <label>Jadwal Keberangkatan</label>
         <?php
-            echo "<select name=agen>
-                    <option selected> Pilih Nama Agen </option>";
-                    $sql="SELECT * FROM agen";
+            echo "<select name=brgkt>
+                    <option selected> Pilih Jadwal Keberangkatan </option>";
+                    $sql="SELECT * FROM keberangkatan";
                     if (!$result = $koneksi->query($sql)) {
                         die('There was an error running the query [' .$koneksi->error. ']');
                     }
                     while ($d=$result->fetch_assoc()) {
-                        echo "<option value=$d[id_agen] > $d[id_agen] - $d[nama]</option>";
+                        echo "<option value=$d[id_keberangkatan] > $d[id_keberangkatan]</option>";
                     }
             echo "</select>"
         ?>
@@ -136,7 +136,7 @@ if (!isset($_SESSION["admin"])) {
 <?php
 if (isset($_POST['save'])) {
     // Prepare the SQL statement
-    $stmt = $koneksi->prepare("INSERT INTO pemesanan (NIK, tgl_pemesanan, ukuran_baju, jenis_pembayaran, Dp_pembayaran, sisa_pembayaran) VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt = $koneksi->prepare("INSERT INTO pemesanan (NIK, tgl_pemesanan, ukuran_baju, jenis_pembayaran, dp_pembayaran, sisa_pembayaran, id_keberangkatan) VALUES (?, ?, ?, ?, ?, ?,?)");
 
     // Check if the prepare statement was successful
     if (!$stmt) {
@@ -144,7 +144,7 @@ if (isset($_POST['save'])) {
     }
 
     // Bind the parameters
-    $success = $stmt->bind_param("ssiiii", $_POST['nik'], $_POST['tglpem'], $_POST['baju'], $_POST['jnspem'], $_POST['dp'], $_POST['sisa']);
+    $success = $stmt->bind_param("ssiiiii", $_POST['nik'], $_POST['tglpem'], $_POST['baju'], $_POST['jnspem'], $_POST['dp'], $_POST['sisa'], $_POST['brgkt']);
 
     // Check if binding parameters was successful
     if (!$success) {

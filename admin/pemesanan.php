@@ -217,6 +217,7 @@ include 'koneksi.php';
                                     <td>Jenis Pembayaran</td>
                                     <td>DP</td>
                                     <td>Sisa</td>
+                                    <td>Aksi</td>
                                 </tr>
                             </thead>
                         <tbody>
@@ -236,7 +237,10 @@ include 'koneksi.php';
                                         <?php echo $pecah['jenis_pembayaran']; ?>
                                     </td>
                                     <td>
-                                        <?php echo $pecah['Dp_pembayaran']; ?>
+                                        <?php echo $pecah['ukuran_baju']; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $pecah['dp_pembayaran']; ?>
                                     </td>
                                     <td> 
                                         <?php echo $pecah['sisa_pembayaran']; ?>

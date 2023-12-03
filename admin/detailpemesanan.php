@@ -231,16 +231,16 @@ include 'koneksi.php';
                                                                 pemesanan.jenis_pembayaran,
                                                                 pemesanan.tgl_pemesanan,
                                                                 detail_pemesanan.status_pemesanan,
-                                                                pemesanan.Dp_pembayaran,
+                                                                pemesanan.dp_pembayaran,
                                                                 pemesanan.sisa_pembayaran
                                                                 
                                                             FROM
                                                                 pemesanan
-                                                            LEFT JOIN
+                                                            JOIN
                                                                 jamaah ON pemesanan.NIK = jamaah.NIK
-                                                            LEFT JOIN
+                                                            JOIN
                                                                 detail_pemesanan ON pemesanan.id_pemesanan = detail_pemesanan.id_pemesanan
-                                                            LEFT JOIN
+                                                            JOIN
                                                                 master_paket ON pemesanan.id_paket = master_paket.id_paket"); ?>
                             <?php while ($pecah = $ambil->fetch_assoc()) { ?>
                                 <tr>
@@ -261,7 +261,7 @@ include 'koneksi.php';
                                     </td>
                                     <td><?php echo $pecah['status_pemesanan']; ?></td>
                                     <td>
-                                        Rp. <?php echo number_format($pecah['Dp_pembayaran']); ?>
+                                        Rp. <?php echo number_format($pecah['dp_pembayaran']); ?>
                                     </td>
                                     <td>
                                         Rp. <?php echo number_format($pecah['sisa_pembayaran']); ?>

@@ -47,20 +47,20 @@
 
         <div class="content">
             <h3>why chose us ?</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis maxime veniam sit corrupti recusandae earum quibusdam ipsum veritatis? Eos, sunt.</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis maxime veniam sit corrupti recusandae earum quibusdam ipsum veritatis? Eos, sunt.</p>
+            <p>Juragan Travel menjanjikan fasilitas dan kenyamanan dengan harga yang terjangkau. Demi kepuasan jamaah dan menjaga kekhusyu'an saat menunaikan panggilan Allah</p>
+            <p>Juragan Travel menjanjikan fasilitas dan kenyamanan dengan harga yang terjangkau. Demi kepuasan jamaah dan menjaga kekhusyu'an saat menunaikan panggilan Allah</p>
             <div class="icons-container">
                 <div class="icons">
                     <i class="fas fa-map"></i>
-                    <span>top destination</span>
+                    <span>Top Destinasi</span>
                 </div>
                 <div class="icons">
                     <i class="fas fa-hand-holding-usd"></i>
-                    <span>affordable price</span>
+                    <span>Harga Terjangkau</span>
                 </div>
                 <div class="icons">
                     <i class="fas fa-headset"></i>
-                    <span>24/7 guide services</span>
+                    <span>24/7 Servis Pelayanan</span>
                 </div>
             </div>
         </div>
@@ -71,7 +71,7 @@
     <!-- review sacion start -->.
 
         <saction class="reviews">
-            <h1 class="heading-title">daftar Paket</h1>
+            <h1 class="heading-title">Daftar Paket</h1>
             <div class="swiper reviews-slider">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide slide">
@@ -184,10 +184,10 @@
 
             <div class="box">
                 <h3>ekstra link</h3>
-                <a href="#"> <i class="fas fa fa-angel-righht"></i></i>ask questions</a>
-                <a href="#"> <i class="fas fa fa-angel-righht"></i></i>about us</a>
-                <a href="#"> <i class="fas fa fa-angel-righht"></i></i>privacy policy</a>
-                <a href="#"> <i class="fas fa fa-angel-righht"></i></i>terms of use</a>
+                <a href="#"> <i class="fas fa fa-angel-righht"></i></i>Ajukan Pertanyaan</a>
+                <a href="#"> <i class="fas fa fa-angel-righht"></i></i>Tentang Kami</a>
+                <a href="#"> <i class="fas fa fa-angel-righht"></i></i>Privacy Policy</a>
+                <a href="#"> <i class="fas fa fa-angel-righht"></i></i>Terms Of Use</a>
             </div>
 
             <div class="box">

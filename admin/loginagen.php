@@ -82,7 +82,7 @@ include '../admin/koneksi.php';
 
         <?php
             if (isset($_POST['login'])) {
-              $ambil = $koneksi->query("SELECT * FROM agen WHERE email='$_POST[email]' AND pass_agen ='$_POST[pass]'");
+              $ambil = $koneksi->query("SELECT * FROM agen WHERE email_agen='$_POST[email]' AND pass_agen ='$_POST[pass]'");
               $yangcocok = $ambil->num_rows;
               if ($yangcocok == 1) {
                 $_SESSION['admin'] = $ambil->fetch_assoc();
@@ -92,7 +92,7 @@ include '../admin/koneksi.php';
               } else {
                 echo "<div class='alert alert-danger'>Login Gagal</div>";
                 echo "<script>alert('Login Gagal, cek kembali email dan password. Pastikan semua terisi');</script>";
-                echo "<meta http-equiv='refresh' content='1;url=login.php'>";
+                echo "<meta http-equiv='refresh' content='1;url=loginagen.php'>";
               }
             }
             ?>

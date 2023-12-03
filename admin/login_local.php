@@ -1,7 +1,7 @@
 <?php
 session_start();
 // Skrip Koneksi
-include 'koneksi.php';
+include '../admin/koneksi.php';
 ?>
 
 <!DOCTYPE html>

@@ -61,7 +61,7 @@ include '../admin/koneksi.php';
                     </form>
 
                     <div class="form-link">
-                        <span>Sudah Punya Akun? <a href="login.php">Login</a></span>
+                        <span>Sudah Punya Akun? <a href="loginagen.php">Login Agen</a></span>
                     </div>
                 </div>
 
@@ -102,7 +102,7 @@ if (isset($_POST["daftar"])) {
             echo "<script>alert('Konfirmasi password tidak sesuai');</script>";
         } else {
             // Cek apakah email sudah digunakan
-            $stmt = $koneksi->prepare("SELECT * FROM agen WHERE email=?");
+            $stmt = $koneksi->prepare("SELECT * FROM agen WHERE email_agen=?");
             $stmt->bind_param("s", $email);
             $stmt->execute();
             $result = $stmt->get_result();
@@ -112,13 +112,13 @@ if (isset($_POST["daftar"])) {
                 echo "<script>alert('Pendaftaran gagal, email sudah digunakan');</script>";
             } else {
                 // Insert data pelanggan
-                $stmt = $koneksi->prepare("INSERT INTO agen(nama, email, pass_agen) VALUES (?, ?, ?)");
+                $stmt = $koneksi->prepare("INSERT INTO agen(nama_agen, email_agen, pass_agen) VALUES (?, ?, ?)");
                 $stmt->bind_param("sss", $nama, $email, $password);
                 $stmt->execute();
                 $stmt->close();
 
                 echo "<script>alert('Pendaftaran sukses, silahkan login');</script>";
-                echo "<script>location = 'login.php';</script>";
+                echo "<script>location = 'loginagen.php';</script>";
             }
         }
     }

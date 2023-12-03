@@ -87,9 +87,9 @@ include'admin/koneksi.php';
                             <img src="admin/assets/foto/<?php echo $perproduk['foto_paket']; ?>" alt="" class="img-fluid" style="max-width: 250px; max-height: 250px;">
                             <div class="caption">
                                 <h3><?php echo $perproduk['nama_paket']; ?></h3>
-                                <h5 style="color:grey;">stok: <?php echo $perproduk['lama_waktu']; ?></h5>
-                                <h5>Rp. <?php echo number_format($perproduk['harga_paket']); ?></h5>
-                                <h3>Deskripsi Produk : <?php echo $perproduk['deskripsi_paket']; ?></h3>
+                                <h3 style="color:grey;">stok: <?php echo $perproduk['lama_waktu']; ?></h3>
+                                <h3>Rp. <?php echo number_format($perproduk['harga_paket']); ?></h3>
+                                <h3><?php echo $perproduk['deskripsi_paket']; ?></h3>
                                 <!-- <a href="beli.php?id=<?php echo $perproduk['id_paket']; ?>" class="btn" style="background-color: #FF6E1E; color: #fff;"> <i class="fas fa-shopping-cart"></i> Beli</a> -->
                                 <a href="detail.php?id=<?php echo $perproduk['id_paket']; ?>" class="btn btn-success"><i class="fas fa-info-circle"></i> Detail</a>
                             </div>
@@ -132,10 +132,10 @@ include'admin/koneksi.php';
 
             <div class="box">
                 <h3>ekstra link</h3>
-                <a href="#"> <i class="fas fa fa-angel-righht"></i></i>ask questions</a>
-                <a href="#"> <i class="fas fa fa-angel-righht"></i></i>about us</a>
-                <a href="#"> <i class="fas fa fa-angel-righht"></i></i>privacy policy</a>
-                <a href="#"> <i class="fas fa fa-angel-righht"></i></i>terms of use</a>
+                <a href="#"> <i class="fas fa fa-angel-righht"></i></i>Ajukan Pertanyaan</a>
+                <a href="#"> <i class="fas fa fa-angel-righht"></i></i>Tentang Kami</a>
+                <a href="#"> <i class="fas fa fa-angel-righht"></i></i>Privacy Policy</a>
+                <a href="#"> <i class="fas fa fa-angel-righht"></i></i>Terms Of Use</a>
             </div>
 
             <div class="box">

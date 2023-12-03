@@ -209,7 +209,6 @@ include 'koneksi.php';
                                                                 master_paket.harga_paket
                                                             FROM
                                                                 keberangkatan
-                                                            JOIN pemesanan ON keberangkatan.id_pemesanan = pemesanan.id_pemesanan
                                                             JOIN master_paket ON keberangkatan.id_paket = master_paket.id_paket"); 
                                 ?>
                                             <?php while ($perproduk = $ambil->fetch_assoc()) { ?>
@@ -224,7 +223,7 @@ include 'koneksi.php';
                                                     <p><?php echo $perproduk['status_keberangkatan']; ?></p>
                                             </td>
                                             <td>
-                                                    <p><?php echo $perproduk['harga_paket']; ?></p>
+                                                    <p>Rp. <?php echo number_format($perproduk['harga_paket']); ?></p>
                                             </td>
                                             
                                             <td>

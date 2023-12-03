@@ -1,16 +1,14 @@
 <?php
+session_start();
 //koneksi ke database
 include'admin/koneksi.php';
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-	
-	
 
     <!-- swiper css link -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
@@ -201,24 +199,24 @@ line-height: normal;
             <div class="swiper-wrapper">
                 <div class="swiper-slide slide" style="background:url(images/bgatas.png) no-repeat">
                     <div class="content">
-                        <span>Umrah & Haji Bersama Kami</span>
-                        <h3>Menunaikan Panggilan Allah</h3>
+                        <span>explore, discover, travel</span>
+                        <h3>travel arround the world</h3>
                         <a href="package.php" class="btn">discover more</a>
                     </div>
                 </div>
 
                 <div class="swiper-slide slide" style="background:url(images/bgatas.png) no-repeat">
                     <div class="content">
-                        <span>Umrah & Haji Bersama Kami</span>
-                        <h3>Menunaikan Panggilan Allah</h3>
+                        <span>explore, discover, travel</span>
+                        <h3>discover the new places</h3>
                         <a href="package.php" class="btn">discover more</a>
                     </div>
                 </div>
 
                 <div class="swiper-slide slide" style="background:url(images/bgatas.png) no-repeat">
                     <div class="content">
-                        <span>Umrah & Haji Bersama Kami</span>
-                        <h3>Menunaikan Panggilan Allah</h3>
+                        <span>explore, discover, travel</span>
+                        <h3>make your tour worthwhile</h3>
                         <a href="package.php" class="btn">discover more</a>
                     </div>
                 </div>
@@ -235,7 +233,7 @@ line-height: normal;
     <!-- services section start -->
 
     <section class="services">
-        <h1 class="heading-title">Pelayanan Kami</h1>
+        <h1 class="heading-title">our services</h1>
         <div class="box-container">
             <div class="box">
                 <img src="images/Ellipse 4.jpg" alt="">
@@ -303,7 +301,7 @@ line-height: normal;
 
         <section class="konten">
         <div class="container">
-            <h1 class="text-center">List Paket</h1>
+            <h1 class="text-center">List Produk</h1>
             <br>
 
             <div class="row">
@@ -316,9 +314,9 @@ line-height: normal;
                             <img src="admin/assets/foto/<?php echo $perproduk['foto_paket']; ?>" alt="" class="img-fluid" style="max-width: 250px; max-height: 250px;">
                             <div class="caption">
                                 <h3><?php echo $perproduk['nama_paket']; ?></h3>
-                                <h3 style="color:grey;">stok: <?php echo $perproduk['lama_waktu']; ?></h3>
-                                <h3>Rp. <?php echo number_format($perproduk['harga_paket']); ?></h3>
-                                <h3><?php echo $perproduk['deskripsi_paket']; ?></h3>
+                                <h5 style="color:grey;">stok: <?php echo $perproduk['lama_waktu']; ?></h5>
+                                <h5>Rp. <?php echo number_format($perproduk['harga_paket']); ?></h5>
+                                <h3>Deskripsi Produk : <?php echo $perproduk['deskripsi_paket']; ?></h3>
                                 <!-- <a href="beli.php?id=<?php echo $perproduk['id_paket']; ?>" class="btn" style="background-color: #FF6E1E; color: #fff;"> <i class="fas fa-shopping-cart"></i> Beli</a> -->
                                 <a href="detail.php?id=<?php echo $perproduk['id_paket']; ?>" class="btn btn-success"><i class="fas fa-info-circle"></i> Detail</a>
                             </div>
@@ -342,9 +340,9 @@ line-height: normal;
 
     <section class="home-offer">
         <div class="content">
-            <h3>Kami memberikan kenyamanan 100%</h3>
-            <p>Juragan Travel menjanjikan fasilitas dan kenyamanan dengan harga yang terjangkau. Demi kepuasan jamaah dan menjaga kekhusyu'an saat menunaikan panggilan Allah</p>
-            <a href="book.php" class="btn">Pesan sekarang</a>
+            <h3>upto 50% off</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa sit quam, ullam nulla eum aspernatur vitae fuga quo inventore ut.</p>
+            <a href="book.php" class="btn">book now</a>
         </div>
     </section>
 
@@ -358,9 +356,12 @@ line-height: normal;
             </div>
 
             <div class="content">
-                <h3>Tentang Kami</h3>
-                <p>Perkenalkan kami PT. Juragan Travel merupakan penyelenggara umroh dengan izin resmi dari Departemen Agama Republik Indonesia dengan no -. PT Juragan TRAVEL menyediakan paket perjalanan ibadah umrah mulai dari paket regular sampai dengan umrah VVIP bintang 5. Kami mempunyai standard pelayanan dengan Harga paket yang kompetitif. PT Juragan TRAVEL juga melayani request paket pribadi atau korporat sesuai kebutuhan pelanggan dan mitra kami.</p>
-                    <a href="about.php" class="btn">Selengkapnya</a>
+                <h3>about us</h3>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+                    Molestias, blanditiis officia. 
+                    Quod voluptatem quos tempora, nulla quis perferendis, odio, 
+                    culpa neque facere sunt eos optio fuga libero accusantium. Est, quam?</p>
+                    <a href="about.php" class="btn">read more</a>
             </div>
         </secion>
 
@@ -384,18 +385,18 @@ line-height: normal;
 
             <div class="box">
                 <h3>ekstra link</h3>
-                <a href="#"> <i class="fas fa fa-angel-righht"></i></i>Ajukan Pertanyaan</a>
-                <a href="#"> <i class="fas fa fa-angel-righht"></i></i>Tentang Kami</a>
-                <a href="#"> <i class="fas fa fa-angel-righht"></i></i>Privacy Policy</a>
-                <a href="#"> <i class="fas fa fa-angel-righht"></i></i>Terms Of Use</a>
+                <a href="#"> <i class="fas fa fa-angel-righht"></i></i>ask questions</a>
+                <a href="#"> <i class="fas fa fa-angel-righht"></i></i>about us</a>
+                <a href="#"> <i class="fas fa fa-angel-righht"></i></i>privacy policy</a>
+                <a href="#"> <i class="fas fa fa-angel-righht"></i></i>terms of use</a>
             </div>
 
             <div class="box">
                 <h3>contact info</h3>
-                <a href="#"> <i class="fas fa-phone"></i></i>0813 3322 2353</a>
-                <a href="#"> <i class="fas fa-phone"></i></i>0815 5822 2333</a>
+                <a href="#"> <i class="fas fa-phone"></i></i>0812-1111-1111</a>
+                <a href="#"> <i class="fas fa-phone"></i></i>0856-2222-2222</a>
                 <a href="#"> <i class="fas fa-envelope"></i></i>jurangan@travel.com</a>
-                <a href="#"> <i class="fas fa-map"></i></i>Jl. Tempurejo No. 112 Jember - Jatim</a>
+                <a href="#"> <i class="fas fa-map"></i></i>Jember, Jawa Timur - 0000</a>
             </div>
 
             <div class="box">
